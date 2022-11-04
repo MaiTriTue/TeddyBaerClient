@@ -1,0 +1,81 @@
+@use '../../components/GlobalStyles/GlobalStyles.scss' as s;
+
+.wrapper {
+    width: 100%;
+    margin-top: 30vh;
+    min-height: 400px;
+    @include s.laptop {
+    }
+
+    @include s.tablet {
+    }
+
+    @include s.mobile {
+        margin-top: 7vh;
+    }
+}
+
+.wrapper-billboard {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+
+    @include s.laptop {
+    }
+
+    @include s.tablet {
+    }
+
+    @include s.mobile {
+        display: block;
+    }
+}
+
+.wrapper-billboard_slide {
+    background-color: var(--backgroundColor5);
+    width: 59%;
+    height: calc((var(--default-layout-width) * 0.59) * 0.64);
+    border-radius: 10px;
+}
+
+.wrapper-billboard_banner {
+    width: 39%;
+    height: calc((var(--default-layout-width) * 0.59) * 0.64);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .wrapper-billboard_banner-20 {
+        width: 100%;
+        height: calc((var(--default-layout-width) * 0.39) * 0.46);
+        background-color: var(--backgroundColor4);
+        border-radius: 10px;
+    }
+
+    .wrapper-billboard_banner-15 {
+        width: 100%;
+        height: calc((var(--default-layout-width) * 0.39) * 0.46);
+        border-radius: 10px;
+        background-color: var(--backgroundColor6);
+    }
+}
+
+@include s.laptop {
+}
+
+@include s.tablet {
+}
+
+@include s.mobile {
+    .wrapper-billboard_slide {
+        width: 100%;
+        height: calc((var(--default-layout-width) * 1) * 0.64);
+    }
+
+    .wrapper-billboard_banner {
+        display: none;
+    }
+}
