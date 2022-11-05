@@ -1,6 +1,4 @@
-import { nail, teddyBear, rose } from '~/assets/iconVector';
-
-import images from '~/assets/images';
+import images from '../assets/images';
 
 const CatagoryData = [
     {

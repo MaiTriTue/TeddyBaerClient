@@ -4,7 +4,6 @@ import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 
 import styles from './Sport.module.scss';
-import images from '~/assets/images';
 
 const cx = classNames.bind(styles);
 

@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 
 import styles from './Register.module.scss';
-import { useStore, actions } from '~/Store';
+import { useStore, actions } from '../../Store';
+
 import {
     InputLastName,
     InputFirstName,

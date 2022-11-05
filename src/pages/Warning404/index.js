@@ -1,10 +1,8 @@
 import React from 'react';
-import { useState } from 'react';
 import classNames from 'classnames/bind';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import styles from './Warning404.module.scss';
-import images from '~/assets/images';
 
 const cx = classNames.bind(styles);
 

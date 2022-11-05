@@ -4,9 +4,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import cookies from 'react-cookies';
 
 import styles from './Login.module.scss';
-import { useStore, actions } from '~/Store';
-import { InputUserName, InputPassword, WarningUserLogin } from '~/components/componentDetail';
-import Apis, { endpoints } from '~/Apis/Apis';
+import { useStore, actions } from '../../Store';
+import { InputUserName, InputPassword, WarningUserLogin } from '../../components/componentDetail';
+import Apis, { endpoints } from '../../Apis/Apis';
 
 const cx = classNames.bind(styles);
 

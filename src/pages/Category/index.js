@@ -4,10 +4,10 @@ import classNames from 'classnames/bind';
 import { Link, useParams } from 'react-router-dom';
 
 import styles from './Category.module.scss';
-import images from '~/assets/images';
-import Apis, { endpoints } from '~/Apis/Apis';
-import { NewProductData, CatagoryData } from '~/datas/datas';
-import { TrendingProduct, SlideCategory } from '~/components/componentDetail';
+
+import Apis, { endpoints } from '../../Apis/Apis';
+import { CatagoryData } from '../../datas/datas';
+import { TrendingProduct, SlideCategory } from '../../components/componentDetail';
 
 const cx = classNames.bind(styles);
 

@@ -1,5 +1,6 @@
 import cookies from 'react-cookies';
-import images from '~/assets/images';
+// import images from '../assets/images';
+
 import {
     SET_USERNAME_INPUT,
     SET_PASSWORD_INPUT,

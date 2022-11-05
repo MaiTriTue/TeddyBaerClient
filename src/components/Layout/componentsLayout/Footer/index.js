@@ -1,20 +1,12 @@
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faAngleDown,
-    faAngleLeft,
-    faAngleRight,
-    faDisplay,
-    faEnvelopeOpenText,
-    faGlobe,
-    faPhone,
-} from '@fortawesome/free-solid-svg-icons';
+import { faEnvelopeOpenText, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-import { useEffect, useRef } from 'react';
-import images from '~/assets/images';
+
+import images from '../../../../assets/images';
 
 import styles from './Footer.module.scss';
-import { faAndroid, faApple, faBootstrap, faFacebook } from '@fortawesome/free-brands-svg-icons';
+import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 
 const cx = classNames.bind(styles);
 

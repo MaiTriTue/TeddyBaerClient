@@ -4,10 +4,9 @@ import classNames from 'classnames/bind';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 
 import styles from './ProDetailPage.module.scss';
-import images from '~/assets/images';
-import Apis, { endpoints } from '~/Apis/Apis';
-import { check, delivery, money, shop, telephone } from '~/assets/iconVector';
-import { useStore, actions } from '~/Store';
+import Apis, { endpoints } from '../../Apis/Apis';
+import { check, delivery, money, shop, telephone } from '../../assets/iconVector';
+import { useStore, actions } from '../../Store';
 
 const cx = classNames.bind(styles);
 

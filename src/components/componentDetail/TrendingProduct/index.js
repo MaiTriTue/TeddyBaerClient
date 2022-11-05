@@ -2,7 +2,8 @@ import classNames from 'classnames/bind';
 
 import { useNavigate } from 'react-router-dom';
 import styles from './TrendingProduct.module.scss';
-import ProductCart from '~/components/componentDetail/ProductCart';
+import ProductCart from '../ProductCart';
+// import ProductCart from '~/components/componentDetail/ProductCart';
 
 const cx = classNames.bind(styles);
 

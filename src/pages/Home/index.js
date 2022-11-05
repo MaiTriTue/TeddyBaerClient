@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 
 import styles from './Home.module.scss';
-import Apis, { endpoints } from '~/Apis/Apis';
-import { BillBeard, BillBeardSale, SlideCategory, TrendingProduct } from '~/components/componentDetail';
-import { CatagoryData, NewProductData } from '~/datas/datas';
+import Apis, { endpoints } from '../../Apis/Apis';
+import { BillBeard, BillBeardSale, SlideCategory, TrendingProduct } from '../../components/componentDetail';
+import { CatagoryData } from '../../datas/datas';
 
 const cx = classNames.bind(styles);
 

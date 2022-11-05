@@ -1,8 +1,8 @@
 import classNames from 'classnames/bind';
 import { useNavigate } from 'react-router-dom';
 import styles from './BillBeardSale.module.scss';
-import images from '~/assets/images';
-import { right } from '~/assets/iconVector';
+import images from '../../../assets/images';
+import { right } from '../../../assets/iconVector';
 
 const cx = classNames.bind(styles);
 

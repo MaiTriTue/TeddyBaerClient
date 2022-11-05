@@ -3,18 +3,9 @@ import classNames from 'classnames/bind';
 import styles from './commentChildren.module.scss';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faAngleDown,
-    faAngleLeft,
-    faAngleRight,
-    faThumbsUp,
-    faMessage,
-    faPaperPlane,
-    faShareNodes,
-    faFlag,
-} from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
-import { useEffect, useRef } from 'react';
+import { faThumbsUp, faMessage, faFlag } from '@fortawesome/free-solid-svg-icons';
+
+import { useEffect } from 'react';
 
 const cx = classNames.bind(styles);
 

@@ -1,9 +1,10 @@
 import classNames from 'classnames/bind';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useRef } from 'react';
-import { useStore, actions } from '~/Store';
+
+import { useStore, actions } from '../../../Store';
 import styles from './BillBeard.module.scss';
-import images from '~/assets/images';
+import images from '../../../assets/images';
 import ImageBanner from './ImageBanner';
 
 const data = [

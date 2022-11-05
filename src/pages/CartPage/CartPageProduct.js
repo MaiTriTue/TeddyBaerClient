@@ -1,13 +1,8 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
+import React from 'react';
 import classNames from 'classnames/bind';
-import { Link, useParams } from 'react-router-dom';
 
 import styles from './CartPage.module.scss';
-import images from '~/assets/images';
-import Apis, { endpoints } from '~/Apis/Apis';
-import { useStore, actions } from '~/Store';
-import { NewProductData } from '~/datas/datas';
+import { useStore, actions } from '../../Store';
 
 const cx = classNames.bind(styles);
 

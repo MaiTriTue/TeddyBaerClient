@@ -1,21 +1,10 @@
 import classNames from 'classnames/bind';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleDown, faThumbsUp, faMessage, faPaperPlane, faFlag } from '@fortawesome/free-solid-svg-icons';
+import { useEffect, useRef, useState } from 'react';
 
 import styles from './comment.module.scss';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faAngleDown,
-    faAngleLeft,
-    faAngleRight,
-    faThumbsUp,
-    faMessage,
-    faPaperPlane,
-    faShareNodes,
-    faFlag,
-} from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
-import { useEffect, useRef, useState } from 'react';
-import { CommentChildren } from '~/components/componentDetail';
+import { CommentChildren } from '../../componentDetail';
 
 const cx = classNames.bind(styles);
 

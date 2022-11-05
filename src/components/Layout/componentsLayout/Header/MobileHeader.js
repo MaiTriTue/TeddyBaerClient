@@ -1,10 +1,10 @@
 import React from 'react';
-import images from '~/assets/images';
-
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
+
 import styles from './Header.module.scss';
-import { useStore, actions } from '~/Store';
+import { useStore, actions } from '../../../../Store';
+import images from '../../../../assets/images';
 
 const cx = classNames.bind(styles);
 

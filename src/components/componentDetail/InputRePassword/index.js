@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
 
 import styles from './InputRePassword.module.scss';
-import { useStore, actions } from '~/Store';
+import { useStore, actions } from '../../../Store';
 
 const cx = classNames.bind(styles);
 

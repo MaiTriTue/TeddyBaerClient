@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 
 import styles from './Warning.module.scss';
-import { useStore, actions } from '~/Store';
+import { useStore, actions } from '../../../Store';
 
 const cx = classNames.bind(styles);
 

@@ -1,13 +1,9 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import classNames from 'classnames/bind';
-import { Link, useParams } from 'react-router-dom';
 
 import styles from './CartPage.module.scss';
-import images from '~/assets/images';
-import Apis, { endpoints } from '~/Apis/Apis';
-import { useStore, actions } from '~/Store';
-import { NewProductData } from '~/datas/datas';
+import { useStore, actions } from '../../Store';
 import CartPageProduct from './CartPageProduct';
 
 const cx = classNames.bind(styles);
@@ -15,7 +11,6 @@ const cx = classNames.bind(styles);
 function CartPage() {
     const [state, dispatch] = useStore();
     const { cartProduct } = state;
-    const [countProduct, setCountProduct] = useState(1);
     const [CartProduct, setCartProduct] = useState('');
     const [discount, setDiscount] = useState(0);
     const [priceTotal, setPriceTotal] = useState(0);

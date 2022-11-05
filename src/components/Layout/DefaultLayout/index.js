@@ -1,9 +1,9 @@
 import classNames from 'classnames/bind';
+import { useEffect, useRef } from 'react';
 
 import styles from './DefaultLayout.module.scss';
-import { Header, Footer } from '~/components/Layout';
-import { useEffect, useRef } from 'react';
-import { useStore, actions } from '~/Store';
+import { Header, Footer } from '../../../components/Layout';
+import { useStore, actions } from '../../../Store';
 
 const cx = classNames.bind(styles);
 

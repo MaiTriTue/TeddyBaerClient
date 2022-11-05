@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import styles from './SlideCategory.module.scss';
 import CategoryNav from './CategoryNav';
 import NewProduct from './NewProduct';
-import { left02, right02, right } from '~/assets/iconVector';
+import { left02, right02, right } from '../../../assets/iconVector';
 
 const cx = classNames.bind(styles);
 

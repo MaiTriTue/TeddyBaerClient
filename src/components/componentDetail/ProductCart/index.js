@@ -4,9 +4,9 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-import { useStore, actions } from '~/Store';
+import { useStore, actions } from '../../../Store';
 import styles from './ProductCart.module.scss';
-import { heartRegule, heartSolid } from '~/assets/iconVector';
+import { heartRegule, heartSolid } from '../../../assets/iconVector';
 
 const cx = classNames.bind(styles);
 

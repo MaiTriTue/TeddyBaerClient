@@ -7,9 +7,9 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './Header.module.scss';
-import images from '~/assets/images';
-import { searchIcon, cartIcon, couponCode, userIcon, wishlists } from '~/assets/iconVector';
-import { useStore, actions } from '~/Store';
+import images from '../../../../assets/images';
+import { searchIcon, cartIcon, couponCode, userIcon, wishlists } from '../../../../assets/iconVector';
+import { useStore, actions } from '../../../../Store';
 
 import MobileHeader from './MobileHeader';
 import { useRef } from 'react';

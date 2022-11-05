@@ -1,4 +1,4 @@
-import { Home, Category, Login, Register, CartPage, Warning404, ProDetailPage } from '~/pages';
+import { Home, Category, Login, Register, CartPage, Warning404, ProDetailPage } from '../pages';
 
 //  Public router
 const PublicRoutes = [
