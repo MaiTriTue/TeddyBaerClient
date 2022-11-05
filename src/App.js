@@ -32,11 +32,12 @@ function App() {
                             <Route
                                 key={index}
                                 path={route.path}
-                                element={
-                                    <Layout>
-                                        <Page />
-                                    </Layout>
-                                }
+                                element={<Page />}
+                                // element={
+                                //     <Layout>
+                                //         <Page />
+                                //     </Layout>
+                                // }
                             />
                         );
                     })}
