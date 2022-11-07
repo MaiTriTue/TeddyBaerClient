@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import photoReducer from '../pages/Home/HomeSlice';
+import sizeReducer from '../pages/Home/HomeSlice';
+import registerReducer from '../pages/Register/RegisterSlice';
 
 const rootReducer = {
-    photos: photoReducer,
+    size: sizeReducer,
+    register: registerReducer,
 };
 
 const store = configureStore({
