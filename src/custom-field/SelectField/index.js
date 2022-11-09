@@ -1,13 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import classNames from 'classnames/bind';
 
-import styles from './SelectField.module.scss';
+// import styles from './SelectField.module.scss';
 
-import { FormGroup, Label } from 'reactstrap';
+import { FormFeedback, FormGroup, Label } from 'reactstrap';
 import Select from 'react-select';
-
-const cx = classNames.bind(styles);
+import { ErrorMessage } from 'formik';
 
 SelectField.propTypes = {
     field: PropTypes.object.isRequired,
@@ -17,6 +15,7 @@ SelectField.propTypes = {
     placeholder: PropTypes.string,
     disabled: PropTypes.bool,
     options: PropTypes.array,
+    className: PropTypes.string,
 };
 
 SelectField.defaultProps = {
@@ -24,11 +23,14 @@ SelectField.defaultProps = {
     placeholder: '',
     disabled: false,
     options: [],
+    className: '',
 };
 
 function SelectField(props) {
-    const { field, form, options, label, placeholder, disabled } = props;
+    const { field, form, options, label, placeholder, disabled, className } = props;
     const { name, value, onChange, onBlur } = field;
+    const { errors, touched } = form;
+    const showError = errors[name] && touched[name];
 
     const selectedOption = options.find((option) => option.value === value);
 
@@ -55,7 +57,10 @@ function SelectField(props) {
                 isDisabled={disabled}
                 placeholder={placeholder}
                 options={options}
+                className={showError ? `${className} is-invalid` : className}
             />
+
+            <ErrorMessage name={name} component={FormFeedback} />
         </FormGroup>
     );
 }

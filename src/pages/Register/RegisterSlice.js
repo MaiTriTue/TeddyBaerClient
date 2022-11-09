@@ -9,12 +9,8 @@ const HomeSlice = createSlice({
         email: '',
         userName: '',
         password: '',
-        checkFirstNameValid: false,
-        checkLastNameValid: false,
-        checkEmailValid: false,
-        checkUserValid: false,
-        checkPassValid: false,
-        checkRePassValid: false,
+        rePassword: '',
+        birthday: '',
     },
     reducers: {
         addLastName: (state, action) => {
@@ -37,45 +33,17 @@ const HomeSlice = createSlice({
             state.password = action.payload;
             return state;
         },
-        setCheckFirstNameValid: (state, action) => {
-            state.checkFirstNameValid = action.payload;
+        addRePassword: (state, action) => {
+            state.rePassword = action.payload;
             return state;
         },
-        setCheckLastNameValid: (state, action) => {
-            state.checkLastNameValid = action.payload;
-            return state;
-        },
-        setCheckEmailValid: (state, action) => {
-            state.checkEmailValid = action.payload;
-            return state;
-        },
-        setCheckUserValid: (state, action) => {
-            state.checkUserValid = action.payload;
-            return state;
-        },
-        setCheckPassValid: (state, action) => {
-            state.checkPassValid = action.payload;
-            return state;
-        },
-        setCheckRePassValid: (state, action) => {
-            state.checkRePassValid = action.payload;
+        addBirthday: (state, action) => {
+            state.birthday = action.payload;
             return state;
         },
     },
 });
 
 const { reducer, actions } = HomeSlice;
-export const {
-    addLastName,
-    addFirstName,
-    addEmail,
-    addUserName,
-    addPassword,
-    setCheckFirstNameValid,
-    setCheckLastNameValid,
-    setCheckEmailValid,
-    setCheckUserValid,
-    setCheckPassValid,
-    setCheckRePassValid,
-} = actions;
+export const { addLastName, addFirstName, addEmail, addUserName, addPassword, addRePassword, addBirthday } = actions;
 export default reducer;

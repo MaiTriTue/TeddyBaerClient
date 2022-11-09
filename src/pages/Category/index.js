@@ -4,9 +4,8 @@ import classNames from 'classnames/bind';
 import { Link, useParams } from 'react-router-dom';
 
 import styles from './Category.module.scss';
-import images from '~/assets/images';
 import Apis, { endpoints } from '~/Apis/Apis';
-import { NewProductData, CatagoryData } from '~/datas/datas';
+import { CATEGORY_DATAS } from '~/constants/Global';
 import { TrendingProduct, SlideCategory } from '~/components';
 
 const cx = classNames.bind(styles);
@@ -14,7 +13,6 @@ const cx = classNames.bind(styles);
 function Category() {
     const { categoryItem } = useParams();
     const [DataProducts, setDataProducts] = useState('');
-    const [movieSrc, setMovieSrc] = useState('');
     const [CategoryTitle, setCategoryTitle] = useState('');
 
     useEffect(() => {
@@ -52,7 +50,7 @@ function Category() {
         <div className={cx('wrapper')}>
             <div className={cx('wrapper-billboard')}>
                 <div className={cx('wrapper-billboard')}>
-                    <SlideCategory type="category" title="Danh mục" datas={CatagoryData} />
+                    <SlideCategory type="category" title="Danh mục" datas={CATEGORY_DATAS} />
                 </div>
             </div>
             <div className={cx('wrapper-billboard')}>

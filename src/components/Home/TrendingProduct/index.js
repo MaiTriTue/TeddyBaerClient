@@ -1,28 +1,18 @@
 import classNames from 'classnames/bind';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
-import { Link, useNavigate } from 'react-router-dom';
-import { useEffect, useRef } from 'react';
-import Apis, { endpoints } from '~/Apis/Apis';
-import { useState } from 'react';
 
 import styles from './TrendingProduct.module.scss';
-import ProductCart from '~/components/Home/ProductCart';
+import { ProductCart } from '~/components';
 
 const cx = classNames.bind(styles);
 
 function TrendingProduct(props) {
     const { type, title, data } = props;
-    const navigate = useNavigate();
 
     return (
         <div className={cx('wrapper')}>
             <div className={cx('wrapper-trending-product')}>
                 <div className={cx('trending-product_header')}>
-                    <h2 className={cx('trending-product_header-title')}>
-                        {data.length !== 0 ? title : ''}
-                        {/* {title} */}
-                    </h2>
+                    <h2 className={cx('trending-product_header-title')}>{data.length !== 0 ? title : ''}</h2>
                 </div>
                 <div className={cx('trending-product_body')}>
                     {data &&

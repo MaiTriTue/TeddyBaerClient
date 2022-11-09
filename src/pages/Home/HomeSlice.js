@@ -6,23 +6,33 @@ const HomeSlice = createSlice({
     initialState: {
         width: 0,
         height: 0,
+        widthScreen: 0,
+        cartProduct: [],
     },
     reducers: {
         addWidth: (state, action) => {
-            console.log(state, '  ', action.payload);
             state.width = action.payload;
-            console.log('kq: ', state);
+
             return state;
         },
         addHeight: (state, action) => {
-            console.log(state, '  ', action.payload);
             state.height = action.payload;
-            console.log('kq: ', state);
+
+            return state;
+        },
+        setWidthScreen: (state, action) => {
+            state.widthScreen = action.payload;
+
+            return state;
+        },
+        setCartProduct: (state, action) => {
+            state.cartProduct.push(action.payload);
+
             return state;
         },
     },
 });
 
 const { reducer, actions } = HomeSlice;
-export const { addWidth, addHeight } = actions;
+export const { addWidth, addHeight, setWidthScreen, setCartProduct } = actions;
 export default reducer;

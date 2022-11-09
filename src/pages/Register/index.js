@@ -6,27 +6,39 @@ import { useDispatch, useSelector } from 'react-redux';
 import styles from './Register.module.scss';
 import { FormRegister } from '~/components';
 import Apis, { endpoints } from '~/Apis/Apis';
-// import {
-//     addLastName,
-//     addFirstName,
-//     addEmail,
-//     addUserName,
-//     addPassword,
-//     setCheckFirstNameValid,
-//     setCheckLastNameValid,
-//     setCheckEmailValid,
-//     setCheckUserValid,
-//     setCheckPassValid,
-//     setCheckRePassValid,
-// } from './RegisterSlice';
+import {
+    addLastName,
+    addFirstName,
+    addEmail,
+    addUserName,
+    addPassword,
+    addRePassword,
+    addBirthday,
+} from './RegisterSlice';
 import { Button, FormGroup, Input, Label } from 'reactstrap';
-import Select from 'react-select';
-import { Formik, Form } from 'formik';
 
 const cx = classNames.bind(styles);
 
-function Register() {
+function Register(props) {
     const dispatch = useDispatch();
+    // const lastName = useSelector((state) => state.firstName);
+    // const firstName = useSelector((state) => state.lastName);
+    // const email = useSelector((state) => state.email);
+    // const userName = useSelector((state) => state.userName);
+    // const password = useSelector((state) => state.password);
+    // const rePassword = useSelector((state) => state.rePassword);
+    // const birthday = useSelector((state) => state.birthday);
+
+    const handleRegisterSubmit = (values) => {
+        console.log('RegisterForm: ', values);
+        dispatch(addLastName(values.lastName));
+        dispatch(addFirstName(values.firstName));
+        dispatch(addEmail(values.email));
+        dispatch(addUserName(values.userName));
+        dispatch(addPassword(values.password));
+        dispatch(addRePassword(values.rePassword));
+        dispatch(addBirthday(values.birthday));
+    };
 
     return (
         <div className={cx('wrapper')}>
@@ -36,7 +48,7 @@ function Register() {
                 </div>
 
                 <div className={cx('gallery-wrap')}>
-                    <FormRegister />
+                    <FormRegister onSubmit={handleRegisterSubmit} />
 
                     <div className={cx('wrap-or')}>
                         <div className={cx('cross')}></div>

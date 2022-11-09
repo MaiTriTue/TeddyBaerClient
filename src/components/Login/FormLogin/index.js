@@ -1,29 +1,37 @@
+import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
-import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Button, FormGroup } from 'reactstrap';
+import { Formik, Form, FastField } from 'formik';
+import * as Yup from 'yup';
 
 import styles from './FormLogin.module.scss';
-
-import { Button, FormGroup, Input, Label } from 'reactstrap';
-import Select from 'react-select';
-import { Formik, Form, FastField } from 'formik';
 import { InputField } from '~/custom-field';
+
+FormLogin.propTypes = {
+    onSubmit: PropTypes.func,
+};
+
+FormLogin.defaultProps = {
+    onSubmit: null,
+};
+
+let validationSchema = Yup.object().shape({
+    username: Yup.string().required('This field is required.'),
+    password: Yup.string().required('This field is required.'),
+});
 
 const cx = classNames.bind(styles);
 
-function FormLogin() {
+function FormLogin(props) {
     const dispatch = useDispatch();
     const initialValues = {
-        firstName: '',
-        lastName: '',
-        email: '',
         username: '',
         password: '',
     };
 
     return (
-        <Formik initialValues={initialValues}>
+        <Formik initialValues={initialValues} onSubmit={props.onSubmit} validationSchema={validationSchema}>
             {(formikProp) => {
                 //  do something here...
                 const { values, errors, touched } = formikProp;
@@ -31,11 +39,25 @@ function FormLogin() {
 
                 return (
                     <Form>
-                        <FastField name={'username'} components={InputField} label={''} placeholder={'Tên đăng nhập'} />
-                        <FastField name={'password'} components={InputField} label={''} placeholder={'Mật khẩu'} />
-
+                        <FastField
+                            name={'username'}
+                            component={InputField}
+                            label={''}
+                            placeholder={'Tên đăng nhập'}
+                            className={'inputField'}
+                        />
+                        <FastField
+                            name={'password'}
+                            component={InputField}
+                            type="password"
+                            label={''}
+                            placeholder={'Mật khẩu'}
+                            className={'inputField'}
+                        />
                         <FormGroup>
-                            <Button color="primary">Đăng Nhập</Button>
+                            <Button color="primary" className="buttonField">
+                                Đăng Nhập
+                            </Button>
                         </FormGroup>
                     </Form>
                 );

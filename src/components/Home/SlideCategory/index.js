@@ -1,21 +1,15 @@
 import classNames from 'classnames/bind';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
-import { Link, useNavigate } from 'react-router-dom';
-import { useEffect, useRef } from 'react';
-import Apis, { endpoints } from '~/Apis/Apis';
-import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import styles from './SlideCategory.module.scss';
 import CategoryNav from './CategoryNav';
 import NewProduct from './NewProduct';
-import { left02, right02, right, nail, teddyBear, rose } from '~/assets/iconVector';
+import { left02, right02, right } from '~/assets/iconVector';
 
 const cx = classNames.bind(styles);
 
 function SlideCategory(props) {
     const { type, title, datas } = props;
-    const navigate = useNavigate();
 
     return (
         <div className={cx('wrapper')}>
