@@ -1,4 +1,4 @@
-import { Home, Category, Login, Register, CartPage, Warning404, ProDetailPage } from '~/pages';
+import { Home, Category, Login, Register, CartPage, Warning404, ProDetailPage, Blog, Contact, Endow } from '~/pages';
 
 //  Public router
 const PublicRoutes = [
@@ -6,6 +6,9 @@ const PublicRoutes = [
     { path: '/gio-hang', component: CartPage, Layout: null },
     { path: '/dang-nhap', component: Login, Layout: null },
     { path: '/dang-ky', component: Register, Layout: null },
+    { path: '/blog', component: Blog, Layout: null },
+    { path: '/lien-he', component: Contact, Layout: null },
+    { path: '/uu-dai', component: Endow, Layout: null },
     { path: '/gau-bong/:slugPro/:idPro', component: ProDetailPage, Layout: null },
     { path: '/', component: Home, Layout: null },
     { path: '/*', component: Warning404, Layout: null },

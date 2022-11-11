@@ -61,3 +61,13 @@ export const CATEGORY_DATAS = [
         link: '/danh-muc/hop-qua',
     },
 ];
+
+export const MENUS_NAV = [
+    { url: '/', content: 'Trang chủ' },
+    { url: 'https://www.facebook.com/GauBongXinhThanhHoa', content: 'Cửa hàng' },
+    { url: 'https://www.facebook.com/Duong.Van2000', content: 'FanPage' },
+    { url: '/danh-muc/nail', content: 'Nail' },
+    { url: '/blog', content: 'Blog' },
+    { url: '/lien-he', content: 'Liên hệ' },
+    { url: '/uu-dai', content: 'Ưu đãi' },
+];

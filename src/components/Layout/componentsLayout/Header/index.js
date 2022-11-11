@@ -12,18 +12,9 @@ import { searchIcon, cartIcon, couponCode, userIcon, wishlists } from '~/assets/
 
 import MobileHeader from './MobileHeader';
 import { useRef } from 'react';
+import { MENUS_NAV } from '~/constants/Global';
 
 const cx = classNames.bind(styles);
-
-const menus = [
-    { url: '/', content: 'Trang chủ' },
-    { url: '/', content: 'Cửa hàng' },
-    { url: '/', content: 'Page' },
-    { url: '/', content: 'Dịch vụ' },
-    { url: '/', content: 'Blog' },
-    { url: '/', content: 'Liên hệ' },
-    { url: '/', content: 'Ưu đãi' },
-];
 
 function Header() {
     const [indexMenu, setIndexMenu] = useState(0);
@@ -166,7 +157,7 @@ function Header() {
                 </div>
 
                 <div className={cx('wrapper-navbar_mobiler')} ref={mobileMenuRef} onClick={HandleHideModel}>
-                    <MobileHeader menus={menus} HandleHideModel={HandleHideModel} />
+                    <MobileHeader menus={MENUS_NAV} HandleHideModel={HandleHideModel} />
                 </div>
                 <div className={cx('wrapper-navbar')}>
                     <div className={cx('wrapper-navbar_nav')}>
@@ -174,8 +165,8 @@ function Header() {
                             <option>shop by departments</option>
                         </select>
                         <ul className={cx('wrapper-navbar_nav-list')}>
-                            {menus &&
-                                menus.map((item, index) => {
+                            {MENUS_NAV &&
+                                MENUS_NAV.map((item, index) => {
                                     activeMenu = indexMenu === index ? 'active' : '';
                                     return (
                                         <li className={cx(activeMenu)} onClick={() => HandleActive(index)} key={index}>

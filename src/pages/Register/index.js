@@ -29,6 +29,10 @@ function Register(props) {
     // const rePassword = useSelector((state) => state.rePassword);
     // const birthday = useSelector((state) => state.birthday);
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     const handleRegisterSubmit = (values) => {
         console.log('RegisterForm: ', values);
         dispatch(addLastName(values.lastName));

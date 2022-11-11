@@ -5,3 +5,6 @@ export { default as Warning404 } from '~/pages/Warning404';
 export { default as Login } from '~/pages/Login';
 export { default as Register } from '~/pages/Register';
 export { default as CartPage } from '~/pages/CartPage';
+export { default as Blog } from '~/pages/Blog';
+export { default as Contact } from '~/pages/Contact';
+export { default as Endow } from '~/pages/Endow';

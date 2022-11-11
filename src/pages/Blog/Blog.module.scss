@@ -1,0 +1,16 @@
+@use '../../components/GlobalStyles/GlobalStyles.scss' as s;
+
+.wrapper {
+    width: 100%;
+    margin-top: 30vh;
+    min-height: 400px;
+    @include s.laptop {
+    }
+
+    @include s.tablet {
+    }
+
+    @include s.mobile {
+        margin-top: 7vh;
+    }
+}
