@@ -64,8 +64,8 @@ export const CATEGORY_DATAS = [
 
 export const MENUS_NAV = [
     { url: '/', content: 'Trang chủ' },
-    { url: 'https://www.facebook.com/GauBongXinhThanhHoa', content: 'Cửa hàng' },
-    { url: 'https://www.facebook.com/Duong.Van2000', content: 'FanPage' },
+    { url: '/danh-muc/gau-bong', content: 'Gấu bông' },
+    { url: '/danh-muc/hoa', content: 'Hồng sáp' },
     { url: '/danh-muc/nail', content: 'Nail' },
     { url: '/blog', content: 'Blog' },
     { url: '/lien-he', content: 'Liên hệ' },

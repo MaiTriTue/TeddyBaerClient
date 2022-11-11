@@ -168,29 +168,12 @@ function Header() {
                             {MENUS_NAV &&
                                 MENUS_NAV.map((item, index) => {
                                     activeMenu = indexMenu === index ? 'active' : '';
-                                    if (index === 1 || index === 2) {
-                                        return (
-                                            <li
-                                                className={cx(activeMenu)}
-                                                onClick={() => HandleActive(index)}
-                                                key={index}
-                                            >
-                                                <a href={item.url} target="_blank">
-                                                    {item.content}
-                                                </a>
-                                            </li>
-                                        );
-                                    } else {
-                                        return (
-                                            <li
-                                                className={cx(activeMenu)}
-                                                onClick={() => HandleActive(index)}
-                                                key={index}
-                                            >
-                                                <Link to={item.url}>{item.content}</Link>
-                                            </li>
-                                        );
-                                    }
+
+                                    return (
+                                        <li className={cx(activeMenu)} onClick={() => HandleActive(index)} key={index}>
+                                            <Link to={item.url}>{item.content}</Link>
+                                        </li>
+                                    );
                                 })}
                         </ul>
                     </div>
