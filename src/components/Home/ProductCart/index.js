@@ -9,14 +9,14 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import styles from './ProductCart.module.scss';
 import { heartRegule, heartSolid } from '~/assets/iconVector';
-import { setCartProduct } from '~/pages/Home/HomeSlice';
+import { addCart, addCountProduct } from '~/pages/CartPage/CartPageSlice';
 
 const cx = classNames.bind(styles);
 
 function ProductCart(props) {
     const { data } = props;
     const dispatch = useDispatch();
-    const cartProduct = useSelector((state) => state.cartProduct);
+    const cartProduct = useSelector((state) => state.cartPage);
     const [countProduct, setCountProduct] = useState(1);
     const [loveProduct, setLoveProduct] = useState(false);
     const navigate = useNavigate();
@@ -26,8 +26,8 @@ function ProductCart(props) {
     }, [cartProduct]);
 
     const handleMinusCount = () => {
-        if (countProduct === 0) {
-            setCountProduct(0);
+        if (countProduct <= 1) {
+            setCountProduct(1);
         } else {
             setCountProduct(countProduct - 1);
         }
@@ -38,16 +38,11 @@ function ProductCart(props) {
     const handleAddCart = (event, data) => {
         event.preventDefault();
         dispatch(
-            setCartProduct([
-                ...cartProduct,
-                {
-                    ...data,
-                    count: countProduct,
-                },
-            ]),
+            addCart({
+                ...data,
+                count: countProduct,
+            }),
         );
-
-        alert('Đã thêm sản phẩm vào giỏ hàng thành công !');
     };
     const handleLoveProduct = (event) => {
         event.preventDefault();

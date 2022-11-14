@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import classNames from 'classnames/bind';
 import { useNavigate } from 'react-router-dom';
 
@@ -8,6 +8,10 @@ const cx = classNames.bind(styles);
 
 function Warning404() {
     const navigate = useNavigate();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     const HandleMoveHome = () => {
         navigate('/');

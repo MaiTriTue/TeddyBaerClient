@@ -1,17 +1,16 @@
-import React, { useEffect } from 'react';
-
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
+import { useRef } from 'react';
+
 import styles from './Header.module.scss';
 import images from '~/assets/images';
 import { searchIcon, cartIcon, couponCode, userIcon, wishlists } from '~/assets/iconVector';
 
 import MobileHeader from './MobileHeader';
-import { useRef } from 'react';
 import { MENUS_NAV } from '~/constants/Global';
 
 const cx = classNames.bind(styles);
@@ -21,12 +20,26 @@ function Header() {
     const navigate = useNavigate();
     const mobileMenuRef = useRef(null);
     const mobileHeaderRef = useRef(null);
-
-    const cartProduct = '';
+    const cartProduct = useSelector((state) => state.cartPage);
     const userLogin = '';
     const [offset, setOffset] = useState(0);
     const [offsetOdd, setOffsetOdd] = useState(0);
+    const [count, setCount] = useState(0);
     let activeMenu;
+
+    useEffect(() => {
+        let sum = 0;
+        console.log('----- 1');
+        console.log(cartProduct);
+        cartProduct.forEach((item, index) => {
+            sum += item.count;
+            console.log('----- 2');
+        });
+        console.log('----- 3');
+        setCount(sum);
+        console.log('----- 4');
+    }, [cartProduct]);
+    console.log('----- 5');
 
     useEffect(() => {
         const onScroll = () => setOffset(window.pageYOffset);
@@ -123,7 +136,7 @@ function Header() {
                                     onClick={() => HandleActive(-1)}
                                 >
                                     <img src={cartIcon} alt="cartIcon" />
-                                    <span>{cartProduct.length}</span>
+                                    <span>{count}</span>
                                 </Link>
                                 <div className={cx('wrapper-header_cart-price')}>
                                     <p>your cart</p>
@@ -149,7 +162,7 @@ function Header() {
                                     onClick={() => HandleActive(-1)}
                                 >
                                     <img src={cartIcon} alt="cartIcon" />
-                                    <span>{cartProduct.length}</span>
+                                    <span>{count}</span>
                                 </Link>
                             </div>
                         </div>

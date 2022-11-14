@@ -7,16 +7,17 @@ import styles from './ProDetailPage.module.scss';
 import Apis, { endpoints } from '~/Apis/Apis';
 import { check, delivery, money, shop, telephone } from '~/assets/iconVector';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCartProduct } from '~/pages/Home/HomeSlice';
+import { addCart, changeCountProduct } from '~/pages/CartPage/CartPageSlice';
 
 const cx = classNames.bind(styles);
 
 function ProDetailPage() {
     const { slugPro, idPro } = useParams();
-
+    const [countProduct, setCountProduct] = useState(1);
+    const [doubleClick, setDoubleClick] = useState(false);
     const [detailPro, setDetailPro] = useState('');
     const dispatch = useDispatch();
-    const cartProduct = useSelector((state) => state.cartProduct);
+    const cartProduct = useSelector((state) => state.cartPage);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -36,16 +37,33 @@ function ProDetailPage() {
         alert('click message !');
     };
 
-    const HandleAddCart = (data) => {
-        dispatch(
-            setCartProduct([
-                ...cartProduct,
-                {
+    const HandleAddCart = (event, data) => {
+        event.preventDefault();
+        let proItems = [];
+        if (!doubleClick) {
+            dispatch(
+                addCart({
                     ...data,
-                    count: 1,
-                },
-            ]),
-        );
+                    count: countProduct,
+                }),
+            );
+        } else {
+            cartProduct.forEach((item, index) => {
+                if (item.id === data.id) {
+                    proItems.push({
+                        ...item,
+                        count: item.count + 1,
+                    });
+                } else {
+                    proItems.push(item);
+                }
+            });
+
+            dispatch(changeCountProduct(proItems));
+            localStorage.setItem('cartProduct', JSON.stringify(proItems));
+        }
+
+        setDoubleClick(true);
     };
 
     return (
@@ -76,7 +94,7 @@ function ProDetailPage() {
                                 Chat Facebook
                             </button>
 
-                            <button className={cx('btn-add-cart')} onClick={() => HandleAddCart(detailPro)}>
+                            <button className={cx('btn-add-cart')} onClick={(event) => HandleAddCart(event, detailPro)}>
                                 Thêm giỏ hàng
                             </button>
                         </div>

@@ -4,82 +4,101 @@ import classNames from 'classnames/bind';
 import { useDispatch, useSelector } from 'react-redux';
 
 import styles from './CartPage.module.scss';
-import { setCartProduct } from '~/pages/Home/HomeSlice';
+import { addCart, changeCountProduct, addCountProduct, changeCartProduct } from './CartPageSlice';
 import CartPageProduct from './CartPageProduct';
 
 const cx = classNames.bind(styles);
 
 function CartPage() {
     const dispatch = useDispatch();
-    const cartProduct = useSelector((state) => state.cartProduct);
-    // const [countProduct, setCountProduct] = useState(1);
+    const cartProduct = useSelector((state) => state.cartPage);
     const [CartProduct, setCartProductState] = useState('');
+    const [CountProduct, setCountProductState] = useState('');
     const [discount, setDiscount] = useState(0);
     const [priceTotal, setPriceTotal] = useState(0);
-
-    let dataLocalStorage = localStorage.getItem('cartProduct') ? JSON.parse(localStorage.getItem('cartProduct')) : [];
 
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
     useEffect(() => {
-        let products = [];
-        if (dataLocalStorage) {
-            products.push(...dataLocalStorage);
-        } else {
-            products.push(...cartProduct);
-            localStorage.setItem('cartProduct', JSON.stringify(products));
-        }
-        if (products.length !== 0) {
-            setCartProductState(products);
-        }
-    }, []);
+        console.log('cartProduct change : ', cartProduct);
+
+        setCartProductState(cartProduct);
+    }, [cartProduct]);
 
     const handleMinusCount = (indexPro) => {
-        let items = CartProduct;
-        if (items[indexPro].count > 0) {
-            items[indexPro].count = items[indexPro].count - 1;
-            dispatch(setCartProduct(items));
-            localStorage.setItem('cartProduct', JSON.stringify(items));
-            setCartProductState(items);
-        }
+        let proItems = [];
+
+        cartProduct.forEach((item, index) => {
+            if (index === indexPro && item.count > 1) {
+                proItems.push({
+                    ...item,
+                    count: item.count - 1,
+                });
+            } else {
+                proItems.push(item);
+            }
+        });
+
+        dispatch(changeCountProduct(proItems));
+        localStorage.setItem('cartProduct', JSON.stringify(proItems));
+        setCartProductState(proItems);
     };
     const handleAddCount = (indexPro) => {
-        let items = CartProduct;
+        let proItems = [];
+        cartProduct.forEach((item, index) => {
+            if (index === indexPro) {
+                proItems.push({
+                    ...item,
+                    count: item.count + 1,
+                });
+            } else {
+                proItems.push(item);
+            }
+        });
 
-        items[indexPro].count = items[indexPro].count + 1;
-        dispatch(setCartProduct(items));
-        localStorage.setItem('cartProduct', JSON.stringify(items));
-        setCartProductState(items);
+        dispatch(changeCountProduct(proItems));
+        localStorage.setItem('cartProduct', JSON.stringify(proItems));
+        setCartProductState(proItems);
     };
 
     const HandleChangeInput = (event, indexPro) => {
-        let items = CartProduct;
+        let proItems = [];
+        cartProduct.forEach((item, index) => {
+            if (index === indexPro) {
+                proItems.push({
+                    ...item,
+                    count: parseInt(event.target.value, 10),
+                });
+            } else {
+                proItems.push(item);
+            }
+        });
 
-        items[indexPro].count = parseInt(event.target.value, 10);
-        dispatch(setCartProduct(items));
-        localStorage.setItem('cartProduct', JSON.stringify(items));
-        setCartProductState(items);
+        dispatch(changeCountProduct(proItems));
+        localStorage.setItem('cartProduct', JSON.stringify(proItems));
+        setCartProductState(proItems);
     };
 
     const HandleDataCart = (index) => {
-        dataLocalStorage = JSON.parse(localStorage.getItem('cartProduct'));
+        let cartProductLocalStorage = JSON.parse(localStorage.getItem('cartProduct'));
         setCartProductState(JSON.parse(localStorage.getItem('cartProduct')));
-        if (dataLocalStorage.length == 0) {
+        if (cartProductLocalStorage.length === 0) {
             localStorage.removeItem('cartProduct');
         }
     };
     const HandleDeleteProduct = (indexDel) => {
-        let items = cartProduct;
-
-        items.forEach((item, index) => {
-            if (index === indexDel) {
-                items.splice(index, 1);
+        let proItems = [];
+        cartProduct.forEach((item, index) => {
+            if (index !== indexDel) {
+                proItems.push(item);
             }
         });
-        dispatch(setCartProduct(items));
-        localStorage.setItem('cartProduct', JSON.stringify(items));
+
+        dispatch(changeCountProduct(proItems));
+        localStorage.setItem('cartProduct', JSON.stringify(proItems));
+        setCartProductState(proItems);
         HandleDataCart();
     };
 
@@ -100,6 +119,8 @@ function CartPage() {
                                 return (
                                     <li key={index}>
                                         <CartPageProduct
+                                            cartData={CartProduct}
+                                            countData={CountProduct}
                                             cartProductItem={item}
                                             cartProductIndex={index}
                                             handleAddCount={handleAddCount}

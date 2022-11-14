@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 
 import styles from './CartPage.module.scss';
@@ -7,7 +7,11 @@ import { useDispatch, useSelector } from 'react-redux';
 const cx = classNames.bind(styles);
 
 function CartPageProduct(props) {
+    const [cartProduct, setCartProduct] = useState('');
+    const [countProduct, setCountProduct] = useState('');
+
     const {
+        cartData,
         cartProductItem,
         cartProductIndex,
         handleAddCount,
@@ -15,19 +19,22 @@ function CartPageProduct(props) {
         HandleChangeInput,
         HandleDeleteProduct,
     } = props;
-    const cartProduct = useSelector((state) => state.cartProduct);
+
+    useEffect(() => {
+        setCartProduct(cartData);
+    }, [cartData]);
 
     return (
         <div className={cx('cart_product')}>
             <div className={cx('cart_product-serial')}>{cartProductIndex + 1}</div>
             <div className={cx('cart_product-detail')}>
                 <div className={cx('cart_product-img')}>
-                    <img src={cartProduct[cartProductIndex].image} alt={cartProduct[cartProductIndex].name} />
+                    <img src={cartProduct && cartProduct[cartProductIndex].image} alt={'image product'} />
                 </div>
                 <div className={cx('cart_product-detail-handle')}>
                     <div className={cx('cart_product-info')}>
                         <div className={cx('cart_product-info-name')}>
-                            <h4>{cartProduct[cartProductIndex].name}</h4>
+                            <h4>{cartProduct && cartProduct[cartProductIndex].name}</h4>
                         </div>
                         <div className={cx('cart_product-info-count')}>
                             <div className={cx('product_count-product')}>
@@ -36,7 +43,12 @@ function CartPageProduct(props) {
                                 </div>
                                 <input
                                     className={cx('product_btn-input')}
-                                    value={cartProduct[cartProductIndex].count}
+                                    // value={cartProduct[cartProductIndex].count}
+                                    value={
+                                        isNaN(cartProduct && cartProduct[cartProductIndex].count)
+                                            ? ''
+                                            : cartProduct && cartProduct[cartProductIndex].count
+                                    }
                                     onChange={(event) => {
                                         HandleChangeInput(event, cartProductIndex);
                                     }}
@@ -49,10 +61,11 @@ function CartPageProduct(props) {
                         </div>
                         <div className={cx('cart_product-info-price')}>
                             <span>
-                                {isNaN(cartProduct[cartProductIndex].price)
+                                {isNaN(cartProduct && cartProduct[cartProductIndex].price)
                                     ? 'LIÊN HỆ'
-                                    : cartProduct[cartProductIndex].price * cartProduct[cartProductIndex].count +
-                                      ' VND'}
+                                    : cartProduct &&
+                                      cartProduct[cartProductIndex].price * cartProduct &&
+                                      cartProduct[cartProductIndex].count + ' VND'}
                             </span>
                         </div>
                     </div>

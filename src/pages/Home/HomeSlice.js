@@ -7,7 +7,6 @@ const HomeSlice = createSlice({
         width: 0,
         height: 0,
         widthScreen: 0,
-        cartProduct: [],
     },
     reducers: {
         addWidth: (state, action) => {
@@ -25,14 +24,9 @@ const HomeSlice = createSlice({
 
             return state;
         },
-        setCartProduct: (state, action) => {
-            state.cartProduct.push(action.payload);
-
-            return state;
-        },
     },
 });
 
 const { reducer, actions } = HomeSlice;
-export const { addWidth, addHeight, setWidthScreen, setCartProduct } = actions;
+export const { addWidth, addHeight, setWidthScreen } = actions;
 export default reducer;
