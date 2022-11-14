@@ -22,8 +22,6 @@ function CartPage() {
     }, []);
 
     useEffect(() => {
-        console.log('cartProduct change : ', cartProduct);
-
         setCartProductState(cartProduct);
     }, [cartProduct]);
 

@@ -29,17 +29,12 @@ function Header() {
 
     useEffect(() => {
         let sum = 0;
-        console.log('----- 1');
-        console.log(cartProduct);
         cartProduct.forEach((item, index) => {
             sum += item.count;
-            console.log('----- 2');
         });
-        console.log('----- 3');
+
         setCount(sum);
-        console.log('----- 4');
     }, [cartProduct]);
-    console.log('----- 5');
 
     useEffect(() => {
         const onScroll = () => setOffset(window.pageYOffset);
@@ -194,7 +189,7 @@ function Header() {
                         <div className={cx('coupon-code_img')}>
                             <img src={couponCode} alt="Get your coupon code" />
                         </div>
-                        <p>Get your coupon code</p>
+                        <span className={cx('coupon-code_content')}>Nhận mã giảm giá</span>
                     </div>
                 </div>
             </div>
