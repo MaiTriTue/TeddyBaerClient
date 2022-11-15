@@ -4,7 +4,7 @@ import classNames from 'classnames/bind';
 import { useDispatch, useSelector } from 'react-redux';
 
 import styles from './CartPage.module.scss';
-import { addCart, changeCountProduct, addCountProduct, changeCartProduct } from './CartPageSlice';
+import { changeCountProduct } from './CartPageSlice';
 import CartPageProduct from './CartPageProduct';
 
 const cx = classNames.bind(styles);
