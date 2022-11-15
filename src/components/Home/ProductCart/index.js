@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import styles from './ProductCart.module.scss';
 import { heartRegule, heartSolid } from '~/assets/iconVector';
-import { addCart, addCountProduct } from '~/pages/CartPage/CartPageSlice';
+import { addCart } from '~/pages/CartPage/CartPageSlice';
 
 const cx = classNames.bind(styles);
 
