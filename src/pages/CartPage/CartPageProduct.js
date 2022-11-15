@@ -2,13 +2,11 @@ import React, { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 
 import styles from './CartPage.module.scss';
-import { useDispatch, useSelector } from 'react-redux';
 
 const cx = classNames.bind(styles);
 
 function CartPageProduct(props) {
     const [cartProduct, setCartProduct] = useState('');
-    const [countProduct, setCountProduct] = useState('');
 
     const {
         cartData,
@@ -46,7 +44,7 @@ function CartPageProduct(props) {
                                 </div>
                                 <input
                                     className={cx('product_btn-input')}
-                                    // value={cartProduct[cartProductIndex].count}
+                                    // value={cartProduct && cartProduct[cartProductIndex].count}
                                     value={
                                         isNaN(cartProduct && cartProduct[cartProductIndex].count)
                                             ? ''
