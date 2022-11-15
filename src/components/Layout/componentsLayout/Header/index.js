@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 
 import styles from './Header.module.scss';
 import images from '~/assets/images';
