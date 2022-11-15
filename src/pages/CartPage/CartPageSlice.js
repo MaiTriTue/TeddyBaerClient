@@ -1,9 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 // import type, { PayloadAction } from '@reduxjs/toolkit'
 
+let cartProduct = localStorage.getItem('cartProduct') ? JSON.parse(localStorage.getItem('cartProduct')) : [];
+
 const CartPageSlice = createSlice({
     name: 'cartPage',
-    initialState: localStorage.getItem('cartProduct') ? JSON.parse(localStorage.getItem('cartProduct')) : [],
+    initialState: cartProduct,
 
     reducers: {
         addCart: (state, action) => {
@@ -17,5 +19,5 @@ const CartPageSlice = createSlice({
 });
 
 const { reducer, actions } = CartPageSlice;
-export const { addCart, changeCountProduct, addCountProduct, changeCartProduct } = actions;
+export const { addCart, changeCountProduct } = actions;
 export default reducer;
