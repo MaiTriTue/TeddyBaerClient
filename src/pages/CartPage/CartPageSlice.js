@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 // import type, { PayloadAction } from '@reduxjs/toolkit'
 
-let cartProduct = localStorage.getItem('cartProduct') ? JSON.parse(localStorage.getItem('cartProduct')) : [];
+// let cartProduct = localStorage.getItem('cartProduct') ? JSON.parse(localStorage.getItem('cartProduct')) : [];
 
 const CartPageSlice = createSlice({
     name: 'cartPage',
-    initialState: cartProduct,
+    initialState: [],
 
     reducers: {
         addCart: (state, action) => {
