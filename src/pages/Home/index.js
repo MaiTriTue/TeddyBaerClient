@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 
 import styles from './Home.module.scss';
-import Apis, { endpoints } from '~/Apis/Apis';
 import { BillBeard, BillBeardSale, SlideCategory, TrendingProduct } from '~/components';
 
 import { CATEGORY_DATAS } from '~/constants/Global';
+import productApi from '~/Apis/productApi';
 
 const cx = classNames.bind(styles);
 
@@ -20,26 +20,71 @@ function Home() {
         window.scrollTo(0, 0);
     }, []);
     useEffect(() => {
-        Apis.get(endpoints['newProduct']).then((res) => {
-            // console.log('newProduct', res.data.results);
-            setNewProduct(res.data.results);
-        });
-        Apis.get(endpoints['teddyBearHot']).then((res) => {
-            // console.log('teddyBearHot', res.data.results);
-            setTeddyBearHotData(res.data.results);
-        });
-        Apis.get(endpoints['bouquetHot']).then((res) => {
-            // console.log('bouquetHot', res.data.results);
-            setBouquetHotData(res.data.results);
-        });
-        Apis.get(endpoints['giftBox']).then((res) => {
-            // console.log('giftBox', res.data.results);
-            setGiftBoxHotData(res.data.results);
-        });
-        Apis.get(endpoints['nailHot']).then((res) => {
-            // console.log('nailHot', res.data.results);
-            setNailHotData(res.data.results);
-        });
+        const fetchNewProduct = async () => {
+            try {
+                const params = {
+                    page: 1,
+                };
+                const response = await productApi.getNewProduct(params);
+                setNewProduct(response.data.results);
+            } catch (error) {
+                console.log('Failed to fetch New product list: ', error);
+            }
+        };
+
+        const fetchTeddyBearHot = async () => {
+            try {
+                const params = {
+                    page: 1,
+                };
+                const response = await productApi.getTeddyBearHot(params);
+                setTeddyBearHotData(response.data.results);
+            } catch (error) {
+                console.log('Failed to fetch New product list: ', error);
+            }
+        };
+
+        const fetchGiftBox = async () => {
+            try {
+                const params = {
+                    page: 1,
+                };
+                const response = await productApi.getGiftBox(params);
+                setGiftBoxHotData(response.data.results);
+            } catch (error) {
+                console.log('Failed to fetch New product list: ', error);
+            }
+        };
+
+        const fetchNailHot = async () => {
+            try {
+                const params = {
+                    page: 1,
+                };
+                const response = await productApi.getNailHot(params);
+                setNailHotData(response.data.results);
+            } catch (error) {
+                console.log('Failed to fetch New product list: ', error);
+            }
+        };
+
+        const fetchBouquetHot = async () => {
+            try {
+                const params = {
+                    page: 1,
+                };
+                const response = await productApi.getBouquetHot(params);
+                setBouquetHotData(response.data.results);
+            } catch (error) {
+                console.log('Failed to fetch New product list: ', error);
+            }
+        };
+
+        fetchNewProduct();
+        fetchTeddyBearHot();
+        fetchGiftBox();
+        fetchNailHot();
+        fetchBouquetHot();
     }, []);
 
     return (

@@ -4,10 +4,11 @@ import classNames from 'classnames/bind';
 import { useParams } from 'react-router-dom';
 
 import styles from './ProDetailPage.module.scss';
-import Apis, { endpoints } from '~/Apis/Apis';
+
 import { check, delivery, money, shop, telephone } from '~/assets/iconVector';
 import { useDispatch, useSelector } from 'react-redux';
 import { addCart, changeCountProduct } from '~/pages/CartPage/CartPageSlice';
+import productApi from '~/Apis/productApi';
 
 const cx = classNames.bind(styles);
 
@@ -24,9 +25,16 @@ function ProDetailPage() {
     }, []);
 
     useEffect(() => {
-        Apis.get(endpoints['products'] + idPro + '/').then((res) => {
-            setDetailPro(res.data);
-        });
+        const fetchDetailProduct = async () => {
+            try {
+                const response = await productApi.get(idPro);
+                setDetailPro(response.data);
+                console.log(response);
+            } catch (error) {
+                console.log('Failed to fetch New product list: ', error);
+            }
+        };
+        fetchDetailProduct();
     }, []);
 
     useEffect(() => {

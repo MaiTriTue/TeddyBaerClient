@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import cookies from 'react-cookies';
 
 import styles from './Login.module.scss';
-import Apis, { endpoints } from '~/Apis/Apis';
+
 import FormLogin from '~/components/Login/FormLogin';
 
 const cx = classNames.bind(styles);

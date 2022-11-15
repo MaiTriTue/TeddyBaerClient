@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight, faHeart, faStar, faTabletAlt } from '@fortawesome/free-solid-svg-icons';
 import { faKissWinkHeart } from '@fortawesome/free-regular-svg-icons';
 import { Link, useNavigate } from 'react-router-dom';
-import Apis, { endpoints } from '~/Apis/Apis';
+
 import { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 

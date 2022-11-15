@@ -4,9 +4,10 @@ import classNames from 'classnames/bind';
 import { Link, useParams } from 'react-router-dom';
 
 import styles from './Category.module.scss';
-import Apis, { endpoints } from '~/Apis/Apis';
+
 import { CATEGORY_DATAS } from '~/constants/Global';
 import { TrendingProduct, SlideCategory } from '~/components';
+import productApi from '~/Apis/productApi';
 
 const cx = classNames.bind(styles);
 
@@ -20,9 +21,15 @@ function Category() {
     }, []);
 
     useEffect(() => {
-        Apis.get('/' + categoryItem + '/').then((res) => {
-            setDataProducts(res.data.results);
-        });
+        const fetchCategory = async () => {
+            try {
+                const response = await productApi.getCategory(categoryItem);
+                setDataProducts(response.data.results);
+            } catch (error) {
+                console.log('Failed to fetch New product list: ', error);
+            }
+        };
+        fetchCategory();
         switch (categoryItem) {
             case 'hoa':
                 setCategoryTitle('Hoa Hồng Sáp ( bó )');

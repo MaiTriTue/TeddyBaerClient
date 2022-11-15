@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import styles from './Register.module.scss';
 import { FormRegister } from '~/components';
-import Apis, { endpoints } from '~/Apis/Apis';
+// import Apis, { endpoints } from '~/Apis/Apis';
 import {
     addLastName,
     addFirstName,
