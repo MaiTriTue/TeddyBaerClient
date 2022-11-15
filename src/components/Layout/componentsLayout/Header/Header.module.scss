@@ -115,6 +115,10 @@
         flex-direction: column;
         justify-content: flex-end;
         align-items: center;
+
+        p {
+            margin-bottom: unset;
+        }
         p:first-child {
             font-size: 1.2rem;
             font-weight: 400;
@@ -192,12 +196,14 @@
 
         .wrapper-header_cart-price {
             p:first-child {
+                margin-bottom: unset;
                 font-size: 1.2rem;
                 font-weight: 400;
                 color: var(--text-color4);
                 line-height: 1.6rem;
             }
             p:last-child {
+                margin-bottom: unset;
                 font-size: 1.5rem;
                 font-weight: 600;
                 color: var(--text-color);
