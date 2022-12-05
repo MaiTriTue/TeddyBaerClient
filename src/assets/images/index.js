@@ -1,5 +1,6 @@
 const images = {
     logoFpt: require('~/assets/images/logo-fpt.png'),
+    iconShop: require('~/assets/images/gaubong-icon.ico'),
     logoRegisterHover: require('~/assets/images/dang-ky-thue-bao-2-hover.png'),
     logoRegister: require('~/assets/images/dang-ky-thue-bao-2.png'),
     logoDowload: require('~/assets/images/download-app.png'),
@@ -31,6 +32,7 @@ const images = {
     thuBongNho: require('~/assets/images/thubong-nho.jpg'),
     heoDeoTimNgoi: require('~/assets/images/heo-deo-tim-ngoi.jpg'),
     dongGia50k: require('~/assets/images/dong-gia-50k.jpg'),
+    christmas: require('~/assets/images/christmas-2022-001.jpg'),
 };
 
 export default images;

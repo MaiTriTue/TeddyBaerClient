@@ -1,0 +1,89 @@
+.wrap-select {
+    position: relative;
+    width: 100%;
+    font-size: 1.4rem;
+    line-height: 2.5rem;
+    // padding-right: 1vw;
+    border: none;
+
+    background: transparent;
+    cursor: pointer;
+
+    .wrap-select_is-selecter {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        // position: relative;
+        background-color: var(--backgroundColor);
+        // border: 1px solid red;
+        border-radius: 5px;
+        padding: 5px 10px;
+
+        .is-selecter_wrap-content {
+            width: 90%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .is-selecter_content {
+            // transform: translateX(-10%);
+        }
+
+        .is-selecter_wrap-img {
+            width: 1.5rem;
+            padding: 0.2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .is-selecter_img {
+            width: 100%;
+            // position: absolute;
+            // right: 10px;
+            // top: 50%;
+            // transform: translateY(-50%);
+            // width: 0.8vw;
+            object-fit: cover;
+            opacity: 0.4;
+        }
+
+        .is-selecter_img:hover {
+            opacity: 0.8;
+        }
+    }
+
+    .wrap-select_option {
+        display: none;
+        position: absolute;
+        width: 100%;
+        // min-height: 50px;
+        margin-top: 2px;
+        border-radius: 5px;
+        background-color: var(--white);
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+
+        .wrap-option {
+            width: 100%;
+            padding: 0 10px;
+            // background-color: rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        }
+
+        .wrap-option:hover {
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+
+        .wrap-select_option-span {
+            display: block;
+            line-height: 3rem;
+        }
+    }
+
+    .select-wrap_option {
+        background-color: black;
+        color: black;
+        text-align: center;
+    }
+}

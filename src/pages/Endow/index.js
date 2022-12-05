@@ -12,7 +12,7 @@ function Endow() {
 
     return (
         <div className={cx('wrapper')}>
-            <h1>Hiện tại cửa hàng chưa có các sản phẩm giảm giá !</h1>
+            <h1>Hiện tại chương trình ưu đãi cửa hàng đang cập nhật, xin quý khách thông cảm !!! !</h1>
         </div>
     );
 }

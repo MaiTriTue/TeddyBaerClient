@@ -13,4 +13,19 @@
     @include s.mobile {
         margin-top: 7vh;
     }
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.contact-title {
+    margin-bottom: 50px;
+}
+
+.contact-info_address {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
 }

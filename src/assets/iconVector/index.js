@@ -13,6 +13,8 @@ import boHong from '~/assets/iconVector/boHong.svg';
 import teddyBear from '~/assets/iconVector/teddyBear.svg';
 import heartRegule from '~/assets/iconVector/heartRegule.svg';
 import heartSolid from '~/assets/iconVector/heartSolid.svg';
+import downArow from '~/assets/iconVector/downArowSvg.svg';
+import calendar from '~/assets/iconVector/calendar-svg.svg';
 
 import check from '~/assets/iconVector/check-svg.svg';
 import delivery from '~/assets/iconVector/delivery-svgrepo-com.svg';
@@ -48,4 +50,6 @@ export {
     teddyBear,
     heartRegule,
     heartSolid,
+    downArow,
+    calendar,
 };

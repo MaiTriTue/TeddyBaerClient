@@ -15,6 +15,26 @@
     }
 }
 
+.wrap-notifycation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.notifycation-loading-data {
+    display: inline-block;
+    padding: 5px 15px;
+    color: gold;
+    border-radius: 7px;
+    background-color: var(--primary);
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(0.98);
+    }
+}
+
 .wrapper-billboard {
     width: 100%;
     display: flex;

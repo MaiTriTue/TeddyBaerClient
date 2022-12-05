@@ -1,47 +1,43 @@
 import classNames from 'classnames/bind';
-import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { unwrapResult } from '@reduxjs/toolkit';
 
 import styles from './Register.module.scss';
 import { FormRegister } from '~/components';
-// import Apis, { endpoints } from '~/Apis/Apis';
-import {
-    addLastName,
-    addFirstName,
-    addEmail,
-    addUserName,
-    addPassword,
-    addRePassword,
-    addBirthday,
-} from './RegisterSlice';
-import { Button, FormGroup, Input, Label } from 'reactstrap';
+import { registerUser } from './RegisterSlice';
+// import { registerUser } from '~/app/userSlice';
+import userApi from '~/Apis/userApi';
 
 const cx = classNames.bind(styles);
 
 function Register(props) {
     const dispatch = useDispatch();
-    // const lastName = useSelector((state) => state.firstName);
-    // const firstName = useSelector((state) => state.lastName);
-    // const email = useSelector((state) => state.email);
-    // const userName = useSelector((state) => state.userName);
-    // const password = useSelector((state) => state.password);
-    // const rePassword = useSelector((state) => state.rePassword);
-    // const birthday = useSelector((state) => state.birthday);
 
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
-    const handleRegisterSubmit = (values) => {
+    const handleRegisterSubmit = async (values) => {
         console.log('RegisterForm: ', values);
-        dispatch(addLastName(values.lastName));
-        dispatch(addFirstName(values.firstName));
-        dispatch(addEmail(values.email));
-        dispatch(addUserName(values.userName));
-        dispatch(addPassword(values.password));
-        dispatch(addRePassword(values.rePassword));
-        dispatch(addBirthday(values.birthday));
+        const formData = {};
+        for (let key in values) {
+            if (key !== 'rePassword') {
+                formData[key] = values[key];
+            }
+            // if (key !== 'birthday' && key !== 'rePassword') {
+            //     formData[key] = values[key];
+            // }
+        }
+
+        try {
+            const actionResult = await dispatch(registerUser(formData));
+            const currentUser = unwrapResult(actionResult);
+
+            console.log('fetch Api-data: ', currentUser);
+        } catch (error) {
+            console.log('Failed to fetch New product list: ', error);
+        }
     };
 
     return (

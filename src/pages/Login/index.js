@@ -6,10 +6,18 @@ import cookies from 'react-cookies';
 import styles from './Login.module.scss';
 
 import FormLogin from '~/components/Login/FormLogin';
+import { unwrapResult } from '@reduxjs/toolkit';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUser } from '~/app/userSlice';
+import { ChangeWarningLogin } from '~/pages/Login/LoginSlice';
+import { WarningUserLogin } from '~/components';
 
 const cx = classNames.bind(styles);
 
 function Login() {
+    const dispatch = useDispatch();
+    const user = useSelector((state) => state.user.current);
+    const warningLogin = useSelector((state) => state.login);
     const wrapperRef = useRef(null);
     const warningLoginRef = useRef(null);
     const navigate = useNavigate();
@@ -28,13 +36,14 @@ function Login() {
         return () => window.removeEventListener('scroll', onScroll);
     }, []);
 
-    // useEffect(() => {
-    //     if (warningLogin === true) {
-    //         warningLoginRef.current.style.display = 'block';
-    //     } else if (warningLogin === false) {
-    //         warningLoginRef.current.style.display = 'none';
-    //     }
-    // }, [warningLogin]);
+    useEffect(() => {
+        console.log('warningLogin: ', warningLogin);
+        if (warningLogin === true) {
+            warningLoginRef.current.style.display = 'block';
+        } else if (warningLogin === false) {
+            warningLoginRef.current.style.display = 'none';
+        }
+    }, [warningLogin]);
 
     // const HandleSubmit = async (e) => {
     //     e.preventDefault();
@@ -69,10 +78,32 @@ function Login() {
     //     }
     // };
 
+    useEffect(() => {
+        console.log(user);
+    }, [user]);
+
+    const handleLoginSubmit = async (values) => {
+        try {
+            const actionResult = await dispatch(getUser(values));
+            const currentUser = unwrapResult(actionResult);
+
+            // cookies.save('teddybearbeautyful-ui::rememberedLogin', JSON.stringify(currentUser.infoAuth));
+            cookies.save('teddybearbeautyful-ui::rememberedLogin', currentUser.infoAuth);
+            localStorage.setItem('teddybearbeautyful-ui::rememberedAccounts', JSON.stringify(currentUser));
+
+            dispatch(ChangeWarningLogin(false));
+            console.log('------ 01 Login user: ', currentUser.infoAuth);
+            navigate('/');
+        } catch (error) {
+            dispatch(ChangeWarningLogin(true));
+            console.log('Failed to Login: ', error.message);
+        }
+    };
+
     return (
         <div className={cx('wrapper')} ref={wrapperRef}>
             <div className={cx('wrapper-warning')} ref={warningLoginRef}>
-                {/* <WarningUserLogin /> */}
+                <WarningUserLogin />
             </div>
             <div className={cx('gallery-display-area')}>
                 <div className={cx('gallery-wrap-title')}>
@@ -80,7 +111,7 @@ function Login() {
                 </div>
 
                 <div className={cx('gallery-wrap')}>
-                    <FormLogin />
+                    <FormLogin onSubmit={handleLoginSubmit} />
 
                     <div className={cx('forgot-password')}>
                         <span>

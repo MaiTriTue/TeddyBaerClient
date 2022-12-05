@@ -21,8 +21,8 @@ FormRegister.defaultProps = {
 };
 
 let validationSchema = Yup.object().shape({
-    firstName: Yup.string().required('This field is required.'),
-    lastName: Yup.string().required('This field is required.'),
+    first_name: Yup.string().required('This field is required.'),
+    last_name: Yup.string().required('This field is required.'),
     username: Yup.string()
         .min(2, 'Username needs to be between 6 and 32 characters !')
         .max(50, 'Username needs to be between 6 and 32 characters !')
@@ -35,9 +35,7 @@ let validationSchema = Yup.object().shape({
 
     email: Yup.string().email('This field is required.'),
     // website: Yup.string().url(),
-    birthday: Yup.date().default(function () {
-        return new Date();
-    }),
+    birthday: Yup.string().required('This field is required.'),
 });
 
 const cx = classNames.bind(styles);
@@ -45,12 +43,13 @@ const cx = classNames.bind(styles);
 function FormRegister(props) {
     // const dispatch = useDispatch();
     const initialValues = {
-        firstName: '',
-        lastName: '',
+        first_name: '',
+        last_name: '',
+        birthday: '',
         email: '',
         username: '',
         password: '',
-        birthday: '',
+        rePassword: '',
     };
 
     return (
@@ -58,19 +57,19 @@ function FormRegister(props) {
             {(formikProp) => {
                 //  do something here...
                 const { values, errors, touched } = formikProp;
-                console.log(values, errors, touched);
+                // console.log(values, errors, touched);
 
                 return (
                     <Form>
                         <FastField
-                            name={'firstName'}
+                            name={'first_name'}
                             component={InputField}
                             label={'firstName'}
                             placeholder={'Họ'}
                             className={'inputField'}
                         />
                         <FastField
-                            name={'lastName'}
+                            name={'last_name'}
                             component={InputField}
                             label={'lastName'}
                             placeholder={'Tên'}
@@ -79,7 +78,6 @@ function FormRegister(props) {
                         <FastField
                             name={'birthday'}
                             component={ReactDatePickerField}
-                            type={'date'}
                             label={'Năm sinh'}
                             placeholder={'Ngày tháng năm sinh'}
                             className={'inputField'}

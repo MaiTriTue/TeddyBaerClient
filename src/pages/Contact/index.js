@@ -12,7 +12,20 @@ function Contact() {
 
     return (
         <div className={cx('wrapper')}>
-            <h1>Thông tin liên hệ</h1>
+            <div className={cx('contact-title')}>
+                <h2>LIÊN HỆ CHÚNG TÔI</h2>
+            </div>
+            <div className={cx('contact-content')}>
+                <p>Nếu bạn muốn liên lạc với chúng tôi, xin vui lòng sử dụng các chi tiết liên lạc dưới đây. </p>
+            </div>
+            <div className={cx('contact-info')}>
+                <div className={cx('contact-info_address')}>
+                    <p>Trụ sở: Shop Gấu Bông Xinh - Minh Sơn - Triệu Sơn - Thanh Hóa</p>
+                </div>
+                <div className={cx('contact-info_phone-email')}>
+                    <p>Điện thoại: 0969024369 (Thứ Hai – Thứ Sáu 9:00 – 17:00). Email: duongvan@gmail.com</p>
+                </div>
+            </div>
         </div>
     );
 }

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 
 import styles from './CartPage.module.scss';
+import { ChangeToPrice } from '~/constants/Global';
 
 const cx = classNames.bind(styles);
 
@@ -62,11 +63,12 @@ function CartPageProduct(props) {
                         </div>
                         <div className={cx('cart_product-info-price')}>
                             <span>
-                                {isNaN(cartProduct && cartProduct[cartProductIndex].price)
-                                    ? 'LIÊN HỆ'
-                                    : cartProduct &&
-                                      cartProduct[cartProductIndex].price * cartProduct &&
-                                      cartProduct[cartProductIndex].count + ' VND'}
+                                {cartProduct && cartProduct[cartProductIndex]['curent_price']
+                                    ? ChangeToPrice(
+                                          cartProduct[cartProductIndex]['curent_price'] *
+                                              cartProduct[cartProductIndex]['count'],
+                                      )
+                                    : 'LIÊN HỆ'}
                             </span>
                         </div>
                     </div>

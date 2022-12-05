@@ -11,6 +11,13 @@ const cx = classNames.bind(styles);
 function SlideCategory(props) {
     const { type, title, datas } = props;
 
+    const handlePre = () => {
+        console.log('pre');
+    };
+    const handleNext = () => {
+        console.log('next');
+    };
+
     return (
         <div className={cx('wrapper')}>
             <div className={cx('gallery-display-area')}>
@@ -18,18 +25,29 @@ function SlideCategory(props) {
                     <div className={cx('gallery-display-area_slide-name')}>
                         <h2>{datas.length !== 0 ? title : ''}</h2>
                         <div className={cx('slyde-name_interactive')}>
-                            <span className={cx('slyde-name_interactive-view-all')}>
-                                Xem thêm
-                                <img src={right} alt="left" />
-                            </span>
-                            <div className={cx('slyde-name_interactive-move')}>
-                                <span className={cx('slyde-name_interactive-pre')}>
-                                    <img src={left02} alt="left" />
+                            {type === 'category' ? (
+                                ''
+                            ) : (
+                                <span className={cx('slyde-name_interactive-view-all')}>
+                                    <Link to={'/'}>
+                                        Xem thêm
+                                        <img src={right} alt="left" />
+                                    </Link>
                                 </span>
-                                <span className={cx('slyde-name_interactive-next')}>
-                                    <img src={right02} alt="left" />
-                                </span>
-                            </div>
+                            )}
+
+                            {type === 'category' ? (
+                                ''
+                            ) : (
+                                <div className={cx('slyde-name_interactive-move')}>
+                                    <span className={cx('slyde-name_interactive-pre')} onClick={handlePre}>
+                                        <img src={left02} alt="left" />
+                                    </span>
+                                    <span className={cx('slyde-name_interactive-next')} onClick={handleNext}>
+                                        <img src={right02} alt="left" />
+                                    </span>
+                                </div>
+                            )}
                         </div>
                     </div>
                     <div className={cx('gallery-display-area_slide-carts')}>

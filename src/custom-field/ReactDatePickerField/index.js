@@ -1,11 +1,20 @@
 import { ErrorMessage } from 'formik';
 import PropTypes from 'prop-types';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import { getMonth, getYear } from 'date-fns';
 import range from 'lodash/range';
 import 'react-datepicker/dist/react-datepicker.css';
+import Select from 'react-select';
+import SelectField from './SelectField';
+import {
+    //   ColourOption,
+    colourOptions,
+    //   FlavourOption,
+    //   GroupedOption,
+    groupedOptions,
+} from '~/constants/Global';
 
 import { FormFeedback, FormGroup, Input, Label } from 'reactstrap';
 
@@ -34,24 +43,32 @@ function ReactDatePickerField(props) {
     const { name, value, onChange, onBlur } = field;
     const { errors, touched } = form;
     const showError = errors[name] && touched[name];
-    const years = range(1990, getYear(new Date()) + 1, 1);
-    const months = [
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-        'July',
-        'August',
-        'September',
-        'October',
-        'November',
-        'December',
-    ];
-    const handleSelectedOptionChange = (date) => {
-        // const selectedValue = selectedOption ? selectedOption.value : selectedOption;
 
+    const [day, setDay] = useState({value: '01', label: '01'});
+    const [month, setmonth] = useState({value: '01', label: '01'});
+    const [year, setyear] = useState({value: '1900', label: '1900'});
+    const [date, setdate] = useState('');
+
+
+    useEffect(() => {
+        setdate(year['value'] + '-' +  month['value'] + '-' + day['value'])  ;
+           
+    }, [day]);
+
+    useEffect(() => {
+        setdate(year['value'] + '-' +  month['value'] + '-' + day['value'])  ;
+        
+    }, [month]);
+
+    useEffect(() => {
+        setdate(year['value'] + '-' +  month['value'] + '-' + day['value'])  ;
+                
+    }, [year]);
+
+    useEffect(() => {
+        
+        // let date = new Date(day['value'] + '/' + month['value'] + '/' + year['value']);
+        console.log('--------------- ok ', date);
         const changeEvent = {
             target: {
                 name: name,
@@ -59,12 +76,39 @@ function ReactDatePickerField(props) {
             },
         };
         field.onChange(changeEvent);
-    };
-    return (
-        <FormGroup>
-            {label && <Label for={name}>{label}</Label>}
+        
+        
+    },[date]);
 
-            <DatePicker
+    const handleChangeDay = (value) => {
+        console.log('dayValue:', value);
+        setDay(value);
+
+    };
+    const handleChangeMonth = (value) => {
+        console.log('monthValue: ', value);
+        setmonth(value);
+    };
+    const handleChangeYear = (value) => {
+        console.log('yearValue: ', value);
+        setyear(value);
+    };
+
+    return (
+        <FormGroup className={'register-form-group'}>
+            {label && (
+                <Label className={'register-select-label'} for={name}>
+                    {label}
+                </Label>
+            )}
+
+            <SelectField
+                handleChangeDay={handleChangeDay}
+                handleChangeMonth={handleChangeMonth}
+                handleChangeYear={handleChangeYear}
+            />
+
+            {/* <DatePicker
                 id={name}
                 {...field}
                 dateFormat="dd/MM/yyyy"
@@ -77,62 +121,6 @@ function ReactDatePickerField(props) {
                 placeholderText={placeholder}
                 className={className}
                 // className={showError ? `${className} is-invalid` : className}
-            />
-
-            {/* <DatePicker
-                id={name}
-                name={name}
-                value={value}
-                onChange={onChange}
-                onBlur={onBlur}
-                type={type}
-                isDisabled={disabled}
-                placeholderText={placeholder}
-                selected={value}
-                className={showError ? `${className} is-invalid` : className}
-                renderCustomHeader={({
-                    date,
-                    changeYear,
-                    changeMonth,
-                    decreaseMonth,
-                    increaseMonth,
-                    prevMonthButtonDisabled,
-                    nextMonthButtonDisabled,
-                }) => (
-                    <div
-                        style={{
-                            margin: 10,
-                            display: 'flex',
-                            justifyContent: 'center',
-                        }}
-                    >
-                        <button onClick={decreaseMonth} disabled={prevMonthButtonDisabled}>
-                            {'<'}
-                        </button>
-                        <select value={getYear(date)} onChange={({ target: { value } }) => changeYear(value)}>
-                            {years.map((option) => (
-                                <option key={option} value={option}>
-                                    {option}
-                                </option>
-                            ))}
-                        </select>
-
-                        <select
-                            value={months[getMonth(date)]}
-                            onChange={({ target: { value } }) => changeMonth(months.indexOf(value))}
-                        >
-                            {months.map((option) => (
-                                <option key={option} value={option}>
-                                    {option}
-                                </option>
-                            ))}
-                        </select>
-
-                        <button onClick={increaseMonth} disabled={nextMonthButtonDisabled}>
-                            {'>'}
-                        </button>
-                    </div>
-                )}
             /> */}
 
             <ErrorMessage name={name} component={FormFeedback} />

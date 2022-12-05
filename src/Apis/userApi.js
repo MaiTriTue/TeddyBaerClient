@@ -3,11 +3,11 @@ import axiosClient from './axiosClient';
 const userApi = {
     login: (params) => {
         const url = '/user/login/';
-        return axiosClient.get(url, { params });
+        return axiosClient.post(url, { params });
     },
     register: (params) => {
         const url = '/user/register/';
-        return axiosClient.get(url, { params });
+        return axiosClient.post(url, { params });
     },
     current_user: (params) => {
         const url = '/user/register/current_user/';

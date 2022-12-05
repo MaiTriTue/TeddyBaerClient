@@ -1,19 +1,27 @@
 import axios from 'axios';
 import queryString from 'query-string';
+import cookies from 'react-cookies';
+
+const Token = cookies.load('teddybearbeautyful-ui::rememberedLogin')
+    ? cookies.load('teddybearbeautyful-ui::rememberedLogin').access_token
+    : '';
 
 const axiosClient = axios.create({
-    baseURL: process.env.REACT_APP_API_URL,
+    baseURL: 'http://127.0.0.1:8000/',
+    // baseURL: process.env.REACT_APP_API_URL,
     headers: {
+        // 'Content-Type': 'multipart/form-data',
         'Content-Type': 'application/json',
+        Authorization: Token ? `Bearer ${Token}` : '',
     },
 
     paramsSerializer: (params) => queryString.stringify(params),
 });
 
-console.log('REACT_APP_API_URL: ', process.env.REACT_APP_API_URL);
+console.log('REACT_APP_API_URL: ', 'http://127.0.0.1:8000/');
+// console.log('REACT_APP_API_URL: ', process.env.REACT_APP_API_URL);
 
-axios.interceptors.request.use(async (config) => {
-    // handle token
+axios.interceptors.request.use((config) => {
     return config;
 });
 
@@ -27,6 +35,7 @@ axios.interceptors.response.use(
     },
     (error) => {
         // handle error
+        console.log('Error: ', error);
         throw error;
     },
 );

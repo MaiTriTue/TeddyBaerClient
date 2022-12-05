@@ -41,21 +41,63 @@ const productApi = {
         const url = '/bup-be/';
         return axiosClient.get(url, { params });
     },
-    getHoa: (params) => {
-        const url = '/hoa/';
+    // New
+    getHongsap: (params) => {
+        const url = '/hong-sap/';
         return axiosClient.get(url, { params });
     },
+    getHoaTien: (params) => {
+        const url = '/hoa-tien/';
+        return axiosClient.get(url, { params });
+    },
+
     getNail: (params) => {
         const url = '/nail/';
         return axiosClient.get(url, { params });
     },
-    getHopQua: (params) => {
-        const url = '/hop-qua/';
+    // new
+    getSon: (params) => {
+        const url = '/son/';
         return axiosClient.get(url, { params });
     },
+    getSocola: (params) => {
+        const url = '/socola/';
+        return axiosClient.get(url, { params });
+    },
+    getMyPham: (params) => {
+        const url = '/my-pham/';
+        return axiosClient.get(url, { params });
+    },
+    getBlogQuaTang: (params) => {
+        const url = '/qua-tang/';
+        return axiosClient.get(url, { params });
+    },
+    getBlogLamDep: (params) => {
+        const url = '/lam-dep/';
+        return axiosClient.get(url, { params });
+    },
+    getBlogChinhHang: (params) => {
+        const url = '/chinh-hang/';
+        return axiosClient.get(url, { params });
+    },
+    getNameList: (params) => {
+        const url = '/search-name-list/';
+        return axiosClient.get(url, { params });
+    },
+
     getCategory: (categoryItem) => {
         const url = `/${categoryItem}/`;
         return axiosClient.get(url);
+    },
+
+    likeProduct: (params) => {
+        const url = '/user/like-product/';
+        return axiosClient.post(url, params);
+    },
+
+    deleteLikeProduct: (params) => {
+        const url = `/user/like-product/${params}/`;
+        return axiosClient.delete(url);
     },
     get: (id) => {
         const url = `/products/${id}/`;

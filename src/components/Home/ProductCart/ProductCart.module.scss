@@ -31,7 +31,7 @@
         display: block;
         border-radius: 10%;
         width: 100%;
-        height: calc(((var(--default-layout-width-mobile) * 20) / 100));
+        height: calc(((var(--default-layout-width) * 20) / 100));
         -o-object-fit: cover;
         object-fit: cover;
         margin: 0 auto 6px auto;
@@ -122,6 +122,23 @@
         font-size: 1.5rem;
         line-height: 2.5rem;
         padding-bottom: 10px;
+
+        span {
+            display: block;
+        }
+
+        .product_info-initial-price {
+            font-size: 1.2rem;
+            line-height: 1.2rem;
+            color: var(--text-color3);
+            text-decoration: line-through;
+        }
+
+        .product_info-current-price {
+            font-size: 2rem;
+            line-height: 2.2rem;
+            color: red;
+        }
     }
 }
 .product_btn {

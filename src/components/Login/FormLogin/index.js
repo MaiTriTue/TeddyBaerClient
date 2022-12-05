@@ -35,7 +35,7 @@ function FormLogin(props) {
             {(formikProp) => {
                 //  do something here...
                 const { values, errors, touched } = formikProp;
-                console.log(values, errors, touched);
+                // console.log(values, errors, touched);
 
                 return (
                     <Form>
@@ -55,7 +55,7 @@ function FormLogin(props) {
                             className={'inputField'}
                         />
                         <FormGroup>
-                            <Button color="primary" className="buttonField">
+                            <Button type="submit" color="primary" className="buttonField">
                                 Đăng Nhập
                             </Button>
                         </FormGroup>

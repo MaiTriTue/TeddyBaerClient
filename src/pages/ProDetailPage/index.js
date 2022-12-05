@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import classNames from 'classnames/bind';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import styles from './ProDetailPage.module.scss';
 
@@ -17,6 +17,7 @@ function ProDetailPage() {
     const [countProduct, setCountProduct] = useState(1);
     const [doubleClick, setDoubleClick] = useState(false);
     const [detailPro, setDetailPro] = useState('');
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const cartProduct = useSelector((state) => state.cartPage);
 
@@ -29,7 +30,6 @@ function ProDetailPage() {
             try {
                 const response = await productApi.get(idPro);
                 setDetailPro(response.data);
-                console.log(response);
             } catch (error) {
                 console.log('Failed to fetch New product list: ', error);
             }
@@ -39,6 +39,9 @@ function ProDetailPage() {
 
     useEffect(() => {
         localStorage.setItem('cartProduct', JSON.stringify(cartProduct));
+        if (doubleClick) {
+            navigate('/gio-hang');
+        }
     }, [cartProduct]);
 
     const HandleMessage = () => {
@@ -103,7 +106,7 @@ function ProDetailPage() {
                             </button>
 
                             <button className={cx('btn-add-cart')} onClick={(event) => HandleAddCart(event, detailPro)}>
-                                Thêm giỏ hàng
+                                Mua ngay
                             </button>
                         </div>
                         <div className={cx('info-order')}>hoặc gọi hotline để đặt hàng 0989.348.280</div>
