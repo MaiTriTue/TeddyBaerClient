@@ -7,8 +7,8 @@ const Token = cookies.load('teddybearbeautyful-ui::rememberedLogin')
     : '';
 
 const axiosClient = axios.create({
-    baseURL: 'http://127.0.0.1:8000/',
-    // baseURL: process.env.REACT_APP_API_URL,
+    // baseURL: 'http://127.0.0.1:8000/',
+    baseURL: process.env.REACT_APP_API_URL,
     headers: {
         // 'Content-Type': 'multipart/form-data',
         'Content-Type': 'application/json',

@@ -5,10 +5,11 @@ import ImageBannerSale from './ImageBannerSale';
 
 const cx = classNames.bind(styles);
 
-function BillBeardSale() {
+function BillBeardSale(props) {
+    const { name, sale } = props;
     return (
         <div className={cx('wrapper-sale')}>
-            <ImageBannerSale />
+            <ImageBannerSale name={name} sale={sale} />
         </div>
     );
 }

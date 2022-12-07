@@ -9,12 +9,14 @@ import images from '~/assets/images';
 import { Link, useParams } from 'react-router-dom';
 
 import { calendar } from '~/assets/iconVector';
+import productApi from '~/Apis/productApi';
 
 const cx = classNames.bind(styles);
 
 function BlogPost() {
     const [postData, setPostData] = useState('');
     const { postName, postId } = useParams();
+    const [BetSeller, setBetSeller] = useState('');
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -36,7 +38,27 @@ function BlogPost() {
             }
         };
 
+        const fetchBetSeller = async () => {
+            try {
+                const params = {
+                    page: 1,
+                };
+
+                const response = await productApi.getBetSeller(params);
+                setBetSeller(response.data.results);
+                console.log('------------Bét seller: ', response.data.results);
+
+                // localStorage.setItem(
+                //     'teddybearbeautyful-ui::rememberedBetSeller',
+                //     JSON.stringify(response.data.results),
+                // );
+            } catch (error) {
+                console.log('Failed to fetch New product list: ', error);
+            }
+        };
+
         fetchNewProduct();
+        fetchBetSeller();
     }, []);
 
     return (
@@ -75,7 +97,7 @@ function BlogPost() {
                     {/* bai 1 */}
                     <div className={cx('post-info_base')}>
                         <div className={cx('post-info_base-img')}>
-                            <img className={cx('base-img_detail')} src={images.christmas} alt="post-image" />
+                            <img className={cx('base-img_detail')} src={postData['image']} alt="post-image" />
                         </div>
 
                         <div className={cx('post-info_create')}>
@@ -111,32 +133,18 @@ function BlogPost() {
                         <h3 className={cx('teddy_info-title')}>Top Quà Tặng Yêu Thích</h3>
                     </div>
 
-                    {/* chi tiet sp */}
-                    <div className={cx('wrapper-teddy_detail')}>
-                        <div className={cx('wrapper-teddy_detail-img')}>
-                            <img className={cx('teddy_detail-img')} src={images.christmas} alt="post-image" />
-                        </div>
-                        <h3 className={cx('teddy_detail-name')}>Gấu lớn lông đỏ</h3>
-                        <span className={cx('teddy_detail-sold')}>Đã bán: 267</span>
-                    </div>
-
-                    {/* chi tiet sp */}
-                    <div className={cx('wrapper-teddy_detail')}>
-                        <div className={cx('wrapper-teddy_detail-img')}>
-                            <img className={cx('teddy_detail-img')} src={images.christmas} alt="post-image" />
-                        </div>
-                        <h3 className={cx('teddy_detail-name')}>Gấu lớn lông đỏ</h3>
-                        <span className={cx('teddy_detail-sold')}>Đã bán: 267</span>
-                    </div>
-
-                    {/* chi tiet sp */}
-                    <div className={cx('wrapper-teddy_detail')}>
-                        <div className={cx('wrapper-teddy_detail-img')}>
-                            <img className={cx('teddy_detail-img')} src={images.christmas} alt="post-image" />
-                        </div>
-                        <h3 className={cx('teddy_detail-name')}>Gấu lớn lông đỏ</h3>
-                        <span className={cx('teddy_detail-sold')}>Đã bán: 267</span>
-                    </div>
+                    {BetSeller &&
+                        BetSeller.map((item, index) => {
+                            return (
+                                <div className={cx('wrapper-teddy_detail')} key={index}>
+                                    <div className={cx('wrapper-teddy_detail-img')}>
+                                        <img className={cx('teddy_detail-img')} src={item['image']} alt="post-image" />
+                                    </div>
+                                    <h3 className={cx('teddy_detail-name')}>{item['name']}</h3>
+                                    <span className={cx('teddy_detail-sold')}>Đã bán: {item['amount_sold']}</span>
+                                </div>
+                            );
+                        })}
                 </div>
             </div>
             <div className={cx('wrapper-title')}></div>

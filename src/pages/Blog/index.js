@@ -8,11 +8,13 @@ import images from '~/assets/images';
 import blogPostApi from '~/Apis/blogPostApi';
 import { ChangeToSlug } from '~/constants/Global';
 import { Link } from 'react-router-dom';
+import productApi from '~/Apis/productApi';
 
 const cx = classNames.bind(styles);
 
 function Blog() {
     const [listPost, setListPost] = useState('');
+    const [BetSeller, setBetSeller] = useState('');
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -31,13 +33,38 @@ function Blog() {
                 //     'teddybearbeautyful-ui::rememberedNewProduct',
                 //     JSON.stringify(response.data.results),
                 // );
-                console.log('fetch New product list: ', response.data);
+                // console.log('fetch New product list: ', response.data);
+            } catch (error) {
+                console.log('Failed to fetch New product list: ', error);
+            }
+        };
+        const fetchBetSeller = async () => {
+            try {
+                const params = {
+                    page: 1,
+                };
+
+                const response = await productApi.getBetSeller(params);
+                setBetSeller(response.data.results);
+                console.log('------------Bét seller: ', response.data.results);
+
+                // localStorage.setItem(
+                //     'teddybearbeautyful-ui::rememberedBetSeller',
+                //     JSON.stringify(response.data.results),
+                // );
             } catch (error) {
                 console.log('Failed to fetch New product list: ', error);
             }
         };
 
         fetchNewProduct();
+        // if (localStorage.getItem('teddybearbeautyful-ui::rememberedBetSeller')) {
+        //     setBetSeller(JSON.parse(localStorage.getItem('teddybearbeautyful-ui::rememberedBetSeller')));
+        // } else {
+        //     fetchBetSeller();
+        // }
+
+        fetchBetSeller();
     }, []);
 
     useEffect(() => {
@@ -128,32 +155,45 @@ function Blog() {
                         <h3 className={cx('teddy_info-title')}>Top Quà Tặng Yêu Thích</h3>
                     </div>
 
-                    {/* chi tiet sp */}
-                    <div className={cx('wrapper-teddy_detail')}>
-                        <div className={cx('wrapper-teddy_detail-img')}>
-                            <img className={cx('teddy_detail-img')} src={images.christmas} alt="post-image" />
-                        </div>
-                        <h3 className={cx('teddy_detail-name')}>Gấu lớn lông đỏ</h3>
-                        <span className={cx('teddy_detail-sold')}>Đã bán: 267</span>
-                    </div>
+                    {BetSeller &&
+                        BetSeller.map((item, index) => {
+                            return (
+                                <div className={cx('wrapper-teddy_detail')} key={index}>
+                                    <div className={cx('wrapper-teddy_detail-img')}>
+                                        <img className={cx('teddy_detail-img')} src={item['image']} alt="post-image" />
+                                    </div>
+                                    <h3 className={cx('teddy_detail-name')}>{item['name']}</h3>
+                                    <span className={cx('teddy_detail-sold')}>Đã bán: {item['amount_sold']}</span>
+                                </div>
+                            );
+                        })}
 
                     {/* chi tiet sp */}
-                    <div className={cx('wrapper-teddy_detail')}>
+                    {/* <div className={cx('wrapper-teddy_detail')}>
                         <div className={cx('wrapper-teddy_detail-img')}>
                             <img className={cx('teddy_detail-img')} src={images.christmas} alt="post-image" />
                         </div>
                         <h3 className={cx('teddy_detail-name')}>Gấu lớn lông đỏ</h3>
                         <span className={cx('teddy_detail-sold')}>Đã bán: 267</span>
-                    </div>
+                    </div> */}
 
                     {/* chi tiet sp */}
-                    <div className={cx('wrapper-teddy_detail')}>
+                    {/* <div className={cx('wrapper-teddy_detail')}>
                         <div className={cx('wrapper-teddy_detail-img')}>
                             <img className={cx('teddy_detail-img')} src={images.christmas} alt="post-image" />
                         </div>
                         <h3 className={cx('teddy_detail-name')}>Gấu lớn lông đỏ</h3>
                         <span className={cx('teddy_detail-sold')}>Đã bán: 267</span>
-                    </div>
+                    </div> */}
+
+                    {/* chi tiet sp */}
+                    {/* <div className={cx('wrapper-teddy_detail')}>
+                        <div className={cx('wrapper-teddy_detail-img')}>
+                            <img className={cx('teddy_detail-img')} src={images.christmas} alt="post-image" />
+                        </div>
+                        <h3 className={cx('teddy_detail-name')}>Gấu lớn lông đỏ</h3>
+                        <span className={cx('teddy_detail-sold')}>Đã bán: 267</span>
+                    </div> */}
                 </div>
             </div>
             <div className={cx('wrapper-title')}></div>

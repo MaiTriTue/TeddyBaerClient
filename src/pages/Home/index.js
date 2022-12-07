@@ -146,12 +146,13 @@ function Home() {
                 <div className={cx('wrapper-billboard_slide')}>
                     <BillBeard />
                 </div>
+
                 <div className={cx('wrapper-billboard_banner')}>
                     <div className={cx('wrapper-billboard_banner-20')}>
-                        <BillBeardSale />
+                        <BillBeardSale name={''} sale={'Đồng giá 40k'} />
                     </div>
                     <div className={cx('wrapper-billboard_banner-15')}>
-                        <BillBeardSale />
+                        <BillBeardSale name={''} sale={'Đồng giá 40k'} />
                     </div>
                 </div>
             </div>

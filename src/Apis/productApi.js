@@ -80,6 +80,10 @@ const productApi = {
         const url = '/chinh-hang/';
         return axiosClient.get(url, { params });
     },
+    getBetSeller: (params) => {
+        const url = '/best-seller/';
+        return axiosClient.get(url, { params });
+    },
     getNameList: (params) => {
         const url = '/search-name-list/';
         return axiosClient.get(url, { params });
