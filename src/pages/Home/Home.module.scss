@@ -8,6 +8,7 @@
     }
 
     @include s.tablet {
+        margin-top: 8vh;
     }
 
     @include s.mobile {

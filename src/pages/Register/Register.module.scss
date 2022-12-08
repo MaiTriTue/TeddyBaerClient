@@ -12,7 +12,10 @@
     @include s.laptop {
     }
     @include s.tablet {
+        margin-top: var(--default-layout-header-height-mobile);
+        min-height: unset;
     }
+
     @include s.mobile {
         margin-top: var(--default-layout-header-height-mobile);
         min-height: unset;
@@ -22,6 +25,11 @@
 .gallery-display-area {
     width: calc((var(--default-layout-width) * 33.9 / 100));
     padding: 48px 0;
+
+    @include s.tablet {
+        width: var(--default-layout-header-height-mobile);
+        padding: 15vw 24px;
+    }
 
     @include s.mobile {
         width: var(--default-layout-header-height-mobile);

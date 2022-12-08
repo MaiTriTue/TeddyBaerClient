@@ -90,10 +90,6 @@ function BlogPost() {
             <div className={cx('wrapper-container')}>
                 {/*  thong tin bai viet */}
                 <div className={cx('wrapper-post_info')}>
-                    {/* <div className={cx('wrapper-post_info-title')}>
-                        <span className={cx('post_info-title')}>Bài viết</span>
-                    </div> */}
-
                     {/* bai 1 */}
                     <div className={cx('post-info_base')}>
                         <div className={cx('post-info_base-img')}>
@@ -106,12 +102,12 @@ function BlogPost() {
                             </div>
                             <div className={cx('post-info_create-time')}>
                                 <span>
-                                    Ngày đăng: {postData['create_date'] ? postData['create_date'] : '01/01/1990'} -
+                                    Ngày đăng: {postData['create_date'] ? postData['create_date'] : '01/01/1990'}
                                 </span>
                             </div>
                             <div className={cx('post-info_create-user')}>
                                 <span>
-                                    - Người đăng: {postData['createName'] ? postData['createName'] : 'Vô danh đại sư'}
+                                    Người đăng: {postData['createName'] ? postData['createName'] : 'Vô danh đại sư'}
                                 </span>
                             </div>
                         </div>
@@ -123,6 +119,11 @@ function BlogPost() {
                             <div className={cx('post-info_base-content-detail')}>
                                 {postData && parse(postData['content'])}
                             </div>
+                        </div>
+                        <div className={cx('post-info_base-prev')}>
+                            <Link to={'/blog'}>
+                                <span>Trở lại</span>
+                            </Link>
                         </div>
                     </div>
                 </div>

@@ -29,10 +29,10 @@ function ImageBanner(props) {
             <div className={cx('wrapper-info')}>
                 <p className={cx('wrapper-info_slogan')}>
                     {Sale ? Sale : ''}
-                    <span className={cx('wrapper-info_slogan-sale')}>
+                    {/* <span className={cx('wrapper-info_slogan-sale')}>
                         <span className={cx('slogan-sale_retangle')}></span>
                         SALE
-                    </span>
+                    </span> */}
                 </p>
                 <p className={cx('wrapper-info_name')}>{content ? content : ''}</p>
                 <button className={cx('wrapper-info_btn')} onClick={() => handleProduct()}>

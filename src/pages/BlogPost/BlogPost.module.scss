@@ -2,16 +2,58 @@
 
 .wrapper {
     width: 100%;
-    margin-top: 120px;
+    margin-top: 30vh;
     min-height: 400px;
+
+    .wrap-notifycation {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 20px 0;
+    }
+
+    .notifycation-loading-data {
+        display: inline-block;
+        padding: 5px 15px;
+        color: gold;
+        border-radius: 7px;
+        background-color: var(--primary);
+        cursor: pointer;
+
+        &:hover {
+            transform: scale(0.98);
+        }
+    }
+
     @include s.laptop {
     }
 
     @include s.tablet {
+        margin-top: 10vh;
     }
 
     @include s.mobile {
         margin-top: 7vh;
+
+        .wrap-notifycation {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .notifycation-loading-data {
+            display: inline-block;
+            padding: 5px 15px;
+            color: gold;
+            border-radius: 7px;
+            background-color: var(--primary);
+            cursor: pointer;
+
+            &:hover {
+                transform: scale(0.98);
+            }
+        }
     }
 }
 
@@ -27,6 +69,15 @@
 
     .blog-slogan {
         color: var(--primary);
+    }
+
+    @include s.laptop {
+    }
+
+    @include s.tablet {
+    }
+
+    @include s.mobile {
     }
 }
 
@@ -49,6 +100,26 @@
         border: 1px solid rgb(255, 0, 123);
         border-radius: 5px;
         box-shadow: 1px 1px 5px rgb(255, 0, 123);
+    }
+
+    @include s.laptop {
+    }
+
+    @include s.tablet {
+    }
+
+    @include s.mobile {
+        .wrapper-post_info {
+            width: 100%;
+            min-height: 50px;
+            border: 1px solid rgb(255, 0, 123);
+            border-radius: 5px;
+            box-shadow: 1px 1px 5px rgb(255, 0, 123);
+        }
+
+        .wrapper-teddy_info {
+            display: none;
+        }
     }
 }
 
@@ -94,29 +165,19 @@
             cursor: unset;
         }
     }
+
+    @include s.laptop {
+    }
+
+    @include s.tablet {
+    }
+
+    @include s.mobile {
+        display: none;
+    }
 }
 
 .wrapper-post_info {
-    .wrapper-post_info-title {
-        width: 100%;
-        display: flex;
-        justify-content: start;
-        align-items: center;
-        padding-left: 20px;
-
-        margin-bottom: 20px;
-        border-bottom: 1px solid rgb(255, 0, 123);
-
-        .post_info-title {
-            font-size: 2rem;
-            line-height: 3.5rem;
-            font-weight: 500;
-
-            color: var(--navigateColor);
-            margin: unset;
-        }
-    }
-
     .post-info_base {
         padding: 5px;
         margin-bottom: 10px;
@@ -142,6 +203,7 @@
             .post-info_create-icon {
             }
             .post-info_create-time {
+                margin-right: 5px;
             }
             .post-info_create-user {
             }
@@ -182,6 +244,182 @@
 
                 &:hover {
                     opacity: 0.8;
+                }
+            }
+        }
+
+        .post-info_base-prev {
+            display: none;
+        }
+    }
+
+    @include s.laptop {
+    }
+
+    @include s.tablet {
+        .post-info_base {
+            padding: 5px;
+            margin-bottom: 10px;
+            .post-info_base-img {
+                width: 100%;
+
+                overflow: hidden;
+                margin-bottom: 20px;
+                border-radius: 20px;
+                // border: 1px solid red;
+
+                .base-img_detail {
+                    width: 100%;
+                    height: 60vw;
+                    height: unset;
+                    object-fit: cover;
+                }
+            }
+
+            .post-info_create {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                padding-right: 20px;
+                .post-info_create-icon {
+                }
+                .post-info_create-time {
+                    margin-right: 5px;
+                }
+                .post-info_create-user {
+                }
+            }
+
+            .post-info_base-content {
+                width: 100%;
+                padding: 30px 0;
+
+                // border: 1px solid red;
+
+                .post-info_base-content-title {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    font-size: 2.2rem;
+                    margin-bottom: 50px;
+                    color: var(--backgroundColor7);
+                }
+
+                .post-info_base-content-detail {
+                    font-size: 1.6rem;
+                    padding: 0 10px;
+                    margin-bottom: 50px;
+                }
+
+                .content-detail_btn {
+                    font-size: 1.6rem;
+                    color: var(--white);
+                }
+
+                .content-detail_btn-title {
+                    padding: 10px 30px;
+                    background-color: var(--primary);
+                    border-radius: 20px;
+                    cursor: pointer;
+
+                    &:hover {
+                        opacity: 0.8;
+                    }
+                }
+            }
+
+            .post-info_base-prev {
+                display: none;
+            }
+        }
+        .post-info_base-prev {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+            padding-left: 10px;
+
+            span {
+                font-size: 1.2rem;
+                padding: 5px 7px;
+                background-color: rgba(0, 0, 0, 0.2);
+                border-radius: 5px;
+            }
+        }
+    }
+
+    @include s.mobile {
+        .post-info_base {
+            padding: 5px;
+            margin-bottom: 10px;
+            .post-info_base-img {
+                width: 100%;
+                height: 60vw;
+                border-radius: 20px;
+                overflow: hidden;
+                margin-bottom: 20px;
+
+                .base-img_detail {
+                    width: 100%;
+                    height: unset;
+                    object-fit: cover;
+                }
+            }
+
+            .post-info_create {
+                font-size: 1.2rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                padding-right: unset;
+                .post-info_create-icon {
+                }
+                .post-info_create-time {
+                    margin-right: 5px;
+                }
+                .post-info_create-user {
+                }
+            }
+
+            .post-info_base-content {
+                width: 100%;
+                padding: 30px 0;
+
+                // border: 1px solid red;
+
+                .post-info_base-content-title {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    font-size: 1rem;
+                    margin-bottom: 30px;
+                    color: var(--backgroundColor7);
+                    h2 {
+                        font-size: 1.3rem;
+                    }
+                }
+
+                .post-info_base-content-detail {
+                    font-size: 1.2rem;
+                    padding: 0 10px;
+                    margin-bottom: 30px;
+                }
+            }
+            .post-info_base-prev {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+
+                padding-left: 10px;
+
+                span {
+                    font-size: 1.2rem;
+                    padding: 5px 7px;
+                    background-color: rgba(0, 0, 0, 0.2);
+                    border-radius: 5px;
                 }
             }
         }
@@ -242,5 +480,14 @@
             top: 85%;
             right: 10%;
         }
+    }
+
+    @include s.laptop {
+    }
+
+    @include s.tablet {
+    }
+
+    @include s.mobile {
     }
 }

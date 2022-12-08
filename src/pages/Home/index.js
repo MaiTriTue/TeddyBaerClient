@@ -225,64 +225,6 @@ function Home() {
                     <h2 className={cx('notifycation-loading-data')}>ĐANG TẢI DỮ LIỆU ...</h2>
                 </div>
             )}
-
-            {/* <div className={cx('wrapper-billboard')}>
-                <div className={cx('wrapper-billboard_slide')}>
-                    <BillBeard />
-                </div>
-                <div className={cx('wrapper-billboard_banner')}>
-                    <div className={cx('wrapper-billboard_banner-20')}>
-                        <BillBeardSale />
-                    </div>
-                    <div className={cx('wrapper-billboard_banner-15')}>
-                        <BillBeardSale />
-                    </div>
-                </div>
-            </div>
-
-            <div className={cx('wrapper-billboard')}>
-                <div className={cx('wrapper-billboard')}>
-                    <SlideCategory type="category" title="Danh mục" datas={CATEGORY_DATAS} />
-                </div>
-            </div>
-            <div className={cx('wrapper-billboard')}>
-                <div className={cx('wrapper-billboard')}>
-                    {newProduct && <SlideCategory type="NewProduct" title="Sản phẩm mới" datas={newProduct} />}
-                </div>
-            </div>
-            <div className={cx('wrapper-billboard')}>
-                <div className={cx('wrapper-billboard')}>
-                    {teddyBearHotData && (
-                        <TrendingProduct type="TrendingProduct" title="Gấu Bông Hot Nhất" data={teddyBearHotData} />
-                    )}
-                </div>
-            </div>
-
-            <div className={cx('wrapper-billboard')}>
-                <div className={cx('wrapper-billboard')}>
-                    {bouquetHotData && (
-                        <TrendingProduct type="BestSellingProduct" title="Hoa Hot Nhất" data={bouquetHotData} />
-                    )}
-                </div>
-            </div>
-            <div className={cx('wrapper-billboard')}>
-                <div className={cx('wrapper-billboard')}>
-                    {giftBoxHotData && (
-                        <TrendingProduct type="BestSellingProduct" title="Hộp Quà Hot Nhất" data={giftBoxHotData} />
-                    )}
-                </div>
-            </div>
-
-            <div className={cx('wrapper-billboard')}>
-                <div className={cx('wrapper-billboard')}>
-                    {bouquetHotData && (
-                        <TrendingProduct type="BestSellingProduct" title="Nail Hot Nhất" data={nailHotData} />
-                    )}
-                </div>
-            </div>
-            <div className={cx('wrapper-billboard')}>
-                <div className={cx('wrapper-billboard')}></div>
-            </div> */}
         </div>
     );
 }

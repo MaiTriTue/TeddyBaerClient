@@ -12,6 +12,10 @@
     @include s.laptop {
     }
     @include s.tablet {
+        margin-top: var(--default-layout-header-height-mobile);
+        padding: unset;
+        margin-bottom: unset;
+        min-height: unset;
     }
     @include s.mobile {
         margin-top: var(--default-layout-header-height-mobile);
@@ -39,6 +43,8 @@
     @include s.laptop {
     }
     @include s.tablet {
+        width: var(--default-layout-width-mobile);
+        padding: 15vw 24px;
     }
     @include s.mobile {
         width: var(--default-layout-width-mobile);

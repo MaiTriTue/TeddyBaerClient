@@ -8,6 +8,7 @@
     }
 
     @include s.tablet {
+        margin-top: 7vh;
     }
 
     @include s.mobile {
@@ -168,6 +169,67 @@
 }
 
 @include s.tablet {
+    .wrapper-detail {
+        flex-direction: column;
+    }
+
+    .wrapper-detail_imgs {
+        width: 100%;
+
+        margin-bottom: 30px;
+
+        .pro-img {
+            width: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+    }
+
+    .wrapper-detail_info {
+        width: 100%;
+        padding-left: unset;
+    }
+
+    .info-product_name {
+        margin-bottom: 10px;
+        h3 {
+            font-size: 2.5rem;
+        }
+    }
+
+    .info-product_btns {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        button {
+            padding: 13px 8vw;
+        }
+    }
+
+    .info-order {
+        color: #333;
+        font-size: 1.4rem;
+        font-style: italic;
+        margin: 10px 0;
+    }
+
+    .info-product_benefit {
+        display: flex;
+
+        .benefit-blog {
+            font-size: 1.2rem;
+        }
+    }
+
+    .info-product_contacts {
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+
+        .contacts-info_blog {
+            font-size: 1.3rem;
+        }
+    }
 }
 
 @include s.mobile {

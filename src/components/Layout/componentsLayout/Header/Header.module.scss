@@ -9,6 +9,15 @@
     z-index: 99;
     border-bottom: 1px solid var(--text-color3);
     background-color: var(--BC-Header02);
+
+    @include s.laptop {
+    }
+    @include s.tablet {
+        // width: var(--default-layout-width-mobile);
+    }
+    @include s.mobile {
+        width: var(--default-layout-width-mobile);
+    }
 }
 
 .gallery-display-area {
