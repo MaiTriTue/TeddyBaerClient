@@ -72,8 +72,9 @@
     cursor: pointer;
     position: absolute;
     padding: 5px 12px;
-    border-radius: 15px;
-    background-color: var(--primary);
+    border-radius: 8px;
+    background-color: var(--backgroundColor7);
+
     top: 80%;
     right: 5%;
     font-weight: 300;
@@ -83,6 +84,7 @@
     &:hover {
         // opacity: 0.8;
         transform: scale(0.97);
+        background-color: var(--primary);
     }
     img {
         margin-left: 10px;
@@ -91,6 +93,7 @@
 
 .wrapper-img {
     width: 100%;
+    cursor: pointer;
 
     img {
         width: 100%;

@@ -10,7 +10,7 @@ import { useState } from 'react';
 const cx = classNames.bind(styles);
 
 function ImageBanner(props) {
-    const { name, sale } = props;
+    const { name, sale, image } = props;
     const [content, setContent] = useState('');
     const [Sale, setSale] = useState('');
     const navigate = useNavigate();
@@ -25,7 +25,7 @@ function ImageBanner(props) {
     };
 
     return (
-        <div className={cx('wrapper')} onClick={() => handleProduct()}>
+        <div className={cx('wrapper')}>
             <div className={cx('wrapper-info')}>
                 <p className={cx('wrapper-info_slogan')}>
                     {Sale ? Sale : ''}
@@ -35,14 +35,14 @@ function ImageBanner(props) {
                     </span>
                 </p>
                 <p className={cx('wrapper-info_name')}>{content ? content : ''}</p>
-                <button className={cx('wrapper-info_btn')}>
-                    Xem chi Tiết
+                <button className={cx('wrapper-info_btn')} onClick={() => handleProduct()}>
+                    Chi Tiết
                     <img src={right} alt="down" />
                 </button>
             </div>
 
             <div className={cx('wrapper-img')}>
-                <img src={'https://cdn-thumbs.imagevenue.com/a9/64/49/ME15OULO_t.jpg'} alt="billBealt01" />{' '}
+                <img src={image ? image : ''} alt="billBealt01" />{' '}
             </div>
         </div>
     );

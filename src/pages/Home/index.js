@@ -149,10 +149,18 @@ function Home() {
 
                 <div className={cx('wrapper-billboard_banner')}>
                     <div className={cx('wrapper-billboard_banner-20')}>
-                        <BillBeardSale name={''} sale={'Đồng giá 40k'} />
+                        <BillBeardSale
+                            name={''}
+                            sale={'Đồng giá 40k'}
+                            image={'https://cdn-thumbs.imagevenue.com/a9/64/49/ME15OULO_t.jpg'}
+                        />
                     </div>
                     <div className={cx('wrapper-billboard_banner-15')}>
-                        <BillBeardSale name={''} sale={'Đồng giá 40k'} />
+                        <BillBeardSale
+                            name={''}
+                            sale={'Giáng sinh'}
+                            image={'https://cdn-thumbs.imagevenue.com/9e/bd/ef/ME15OUCV_t.jpg'}
+                        />
                     </div>
                 </div>
             </div>
