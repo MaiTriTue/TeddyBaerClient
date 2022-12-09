@@ -11,6 +11,7 @@ function SelectBase(props) {
     const [optionData, setOptionData] = useState('');
     const [checkOption, setCheckOption] = useState(false);
     const [isSelecter, setIsSelecter] = useState('');
+    const [Label, setLabel] = useState('');
     const wrapOptionRef = useRef(null);
 
     useEffect(() => {

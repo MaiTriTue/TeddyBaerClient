@@ -5,6 +5,7 @@ import BlogPost from '~/pages/BlogPost';
 const PublicRoutes = [
     { path: '/danh-muc/:categoryItem', component: Category, Layout: null },
     { path: '/gio-hang', component: CartPage, Layout: null },
+
     { path: '/dang-nhap', component: Login, Layout: null },
     { path: '/dang-ky', component: Register, Layout: null },
     { path: '/blog', component: Blog, Layout: null },

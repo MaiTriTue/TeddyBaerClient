@@ -79,7 +79,10 @@ function Category() {
                 }
             } else {
                 try {
-                    const response = await productApi.getCategory(categoryItem);
+                    const params = {
+                        page: 1,
+                    };
+                    const response = await productApi.getCategory(categoryItem, params);
                     setDataProducts(response.data.results);
                     setDataProducts02('');
                     setDataProducts03('');

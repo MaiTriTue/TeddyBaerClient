@@ -6,10 +6,10 @@ import ImageBannerSale from './ImageBannerSale';
 const cx = classNames.bind(styles);
 
 function BillBeardSale(props) {
-    const { name, sale, image } = props;
+    const { name, sale, image, movieLink } = props;
     return (
         <div className={cx('wrapper-sale')}>
-            <ImageBannerSale name={name} sale={sale} image={image} />
+            <ImageBannerSale name={name} sale={sale} image={image} movieLink={movieLink} />
         </div>
     );
 }

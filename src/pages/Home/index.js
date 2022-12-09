@@ -153,6 +153,7 @@ function Home() {
                             name={''}
                             sale={'Đồng giá 40k'}
                             image={'https://cdn-thumbs.imagevenue.com/a9/64/49/ME15OULO_t.jpg'}
+                            movieLink={'/danh-muc/price40k'}
                         />
                     </div>
                     <div className={cx('wrapper-billboard_banner-15')}>

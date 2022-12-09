@@ -10,18 +10,20 @@ import { useState } from 'react';
 const cx = classNames.bind(styles);
 
 function ImageBanner(props) {
-    const { name, sale, image } = props;
+    const { name, sale, image, movieLink } = props;
     const [content, setContent] = useState('');
     const [Sale, setSale] = useState('');
+    const [MovieLink, setMovieLink] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
         setContent(name);
         setSale(sale);
+        setMovieLink(movieLink);
     }, []);
 
     const handleProduct = () => {
-        navigate('/');
+        navigate(MovieLink);
     };
 
     return (
@@ -35,10 +37,14 @@ function ImageBanner(props) {
                     </span> */}
                 </p>
                 <p className={cx('wrapper-info_name')}>{content ? content : ''}</p>
-                <button className={cx('wrapper-info_btn')} onClick={() => handleProduct()}>
-                    Chi Tiết
-                    <img src={right} alt="down" />
-                </button>
+                {MovieLink ? (
+                    <button className={cx('wrapper-info_btn')} onClick={() => handleProduct()}>
+                        Chi Tiết
+                        <img src={right} alt="down" />
+                    </button>
+                ) : (
+                    ''
+                )}
             </div>
 
             <div className={cx('wrapper-img')}>

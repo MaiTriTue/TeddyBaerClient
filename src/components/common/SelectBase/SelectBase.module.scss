@@ -9,6 +9,13 @@
     background: transparent;
     cursor: pointer;
 
+    .wrap-select_label {
+        .wrap-select_label-detail {
+            font-size: 1.5rem;
+            line-height: 1.5;
+        }
+    }
+
     .wrap-select_is-selecter {
         width: 100%;
         display: flex;

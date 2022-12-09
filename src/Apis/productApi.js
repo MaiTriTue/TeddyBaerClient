@@ -84,14 +84,18 @@ const productApi = {
         const url = '/best-seller/';
         return axiosClient.get(url, { params });
     },
+    getPrice40k: (params) => {
+        const url = '/price40k/';
+        return axiosClient.get(url, { params });
+    },
     getNameList: (params) => {
         const url = '/search-name-list/';
         return axiosClient.get(url, { params });
     },
 
-    getCategory: (categoryItem) => {
+    getCategory: (categoryItem, params) => {
         const url = `/${categoryItem}/`;
-        return axiosClient.get(url);
+        return axiosClient.get(url, { params });
     },
 
     likeProduct: (params) => {
